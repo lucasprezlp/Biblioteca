@@ -10,5 +10,5 @@ package biblioteca.Data;
  * @author lucas
  */
 public class LibroData {
-    
+   
 }
