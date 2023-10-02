@@ -8,30 +8,102 @@ public class Lector {
    public String nombreCompleto;
    public Object domicilio;
    public String mail;
+   public int dni;
+   public int telefono;
    public boolean estado;
-
+   
     public Lector() {
     }
-    public Lector(int nroSocio, String nombreCompleto, Object domicilio, String mail, boolean estado) {
-        this.nroSocio = nroSocio;
-        this.nombreCompleto = nombreCompleto;
-        this.domicilio = domicilio;
-        this.mail = mail;
-        this.estado = estado;
-    }
-    public Lector(int idLector, int nroSocio, String nombreCompleto, Object domicilio, String mail, boolean estado) {
+
+    public Lector(int idLector, int nroSocio, String nombreCompleto, Object domicilio, String mail, int dni, int telefono, boolean estado) {
         this.idLector = idLector;
         this.nroSocio = nroSocio;
         this.nombreCompleto = nombreCompleto;
         this.domicilio = domicilio;
         this.mail = mail;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.estado = estado;
+    }
+
+    public Lector(int nroSocio, String nombreCompleto, Object domicilio, String mail, int dni, int telefono, boolean estado) {
+        this.nroSocio = nroSocio;
+        this.nombreCompleto = nombreCompleto;
+        this.domicilio = domicilio;
+        this.mail = mail;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.estado = estado;
+    }
+
+    public int getIdLector() {
+        return idLector;
+    }
+
+    public void setIdLector(int idLector) {
+        this.idLector = idLector;
+    }
+
+    public int getNroSocio() {
+        return nroSocio;
+    }
+
+    public void setNroSocio(int nroSocio) {
+        this.nroSocio = nroSocio;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public Object getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(Object domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Lector{" + "idLector=" + idLector + ", nroSocio=" + nroSocio + ", nombreCompleto=" + nombreCompleto + ", domicilio=" + domicilio + ", mail=" + mail + ", estado=" + estado + '}';
+        return "Lector{" + "idLector=" + idLector + ", nroSocio=" + nroSocio + ", nombreCompleto=" + nombreCompleto + ", domicilio=" + domicilio + ", mail=" + mail + ", dni=" + dni + ", telefono=" + telefono + ", estado=" + estado + '}';
     }
-   
+
   
 }
