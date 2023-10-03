@@ -5,7 +5,7 @@ public class Libro {
     public int idLibro;
    public int isbn;
    public String titulo;
-   public Autor autor;
+   public String autor;
    public int anio;
    public String tipo;
    public String Editor;
@@ -15,7 +15,7 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(int idLibro, int isbn, String titulo, Autor autor, int anio, String tipo, String Editor, boolean estado, int numEjemplares) {
+    public Libro(int idLibro, int isbn, String titulo, String autor, int anio, String tipo, String Editor, boolean estado, int numEjemplares) {
         this.idLibro = idLibro;
         this.isbn = isbn;
         this.titulo = titulo;
@@ -27,7 +27,7 @@ public class Libro {
         this.numEjemplares = numEjemplares;
     }
 
-    public Libro(int isbn, String titulo, Autor autor, int anio, String tipo, String Editor, boolean estado, int numEjemplares) {
+    public Libro(int isbn, String titulo, String autor, int anio, String tipo, String Editor, boolean estado, int numEjemplares) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -62,11 +62,11 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public Autor getAutor() {
+    public String getAutor() {
         return autor;
     }
 
-    public void setAutor(Autor autor) {
+    public void setAutor(String autor) {
         this.autor = autor;
     }
 

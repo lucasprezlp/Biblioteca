@@ -6,7 +6,7 @@ public class Lector {
    public int idLector;
    public int nroSocio;
    public String nombreCompleto;
-   public Object domicilio;
+   public String domicilio;
    public String mail;
    public int dni;
    public int telefono;
@@ -15,7 +15,7 @@ public class Lector {
     public Lector() {
     }
 
-    public Lector(int idLector, int nroSocio, String nombreCompleto, Object domicilio, String mail, int dni, int telefono, boolean estado) {
+    public Lector(int idLector, int nroSocio, String nombreCompleto, String domicilio, String mail, int dni, int telefono, boolean estado) {
         this.idLector = idLector;
         this.nroSocio = nroSocio;
         this.nombreCompleto = nombreCompleto;
@@ -26,7 +26,7 @@ public class Lector {
         this.estado = estado;
     }
 
-    public Lector(int nroSocio, String nombreCompleto, Object domicilio, String mail, int dni, int telefono, boolean estado) {
+    public Lector(int nroSocio, String nombreCompleto, String domicilio, String mail, int dni, int telefono, boolean estado) {
         this.nroSocio = nroSocio;
         this.nombreCompleto = nombreCompleto;
         this.domicilio = domicilio;
@@ -60,11 +60,11 @@ public class Lector {
         this.nombreCompleto = nombreCompleto;
     }
 
-    public Object getDomicilio() {
+    public String getDomicilio() {
         return domicilio;
     }
 
-    public void setDomicilio(Object domicilio) {
+    public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }
 
