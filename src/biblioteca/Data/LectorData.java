@@ -44,7 +44,7 @@ public class LectorData {
             int exito=ps.executeUpdate();
             if(exito==1){
                 JOptionPane.showMessageDialog(null, "Se DESactivo el lector");
-            }
+            } 
    
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la BD lector");        }

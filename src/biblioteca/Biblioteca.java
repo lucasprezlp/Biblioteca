@@ -5,17 +5,27 @@
  */
 package biblioteca;
 
+import biblioteca.Data.LectorData;
+import biblioteca.Entidades.Lector;
+
 /**
  *
  * @author lucas
  */
 public class Biblioteca {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
-        // TODO code application logic here
+      
+        //pruebas de la clase LectorData.
+        
+        Lector lector = new Lector();
+        LectorData ld = new LectorData();
+        
+//        ld.desactivarLector(1);
+        ld.activarLector(1);
+        
+        
     }
     
 }

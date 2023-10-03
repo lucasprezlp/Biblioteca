@@ -5,7 +5,7 @@ import java.sql.*;
 public class conexion {
 
     private static final String url = "jdbc:mariadb://localhost/";
-    private static final String bd = "universidad";
+    private static final String bd = "biblioteca";
     private static final String usuario = "root";
     private static final String pass = "";
 
