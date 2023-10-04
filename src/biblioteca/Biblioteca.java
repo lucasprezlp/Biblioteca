@@ -24,7 +24,7 @@ public class Biblioteca {
         
 //        ld.desactivarLector(1);
         ld.activarLector(1);
-        
+         
         
     }
     
