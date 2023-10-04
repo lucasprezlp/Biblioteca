@@ -1,22 +1,24 @@
-
 package biblioteca.Entidades;
 
 
+
 public class Ejemplar {
-    
+
     public int idEjemplar;
     public int codigo;
     public Libro libro;
-    public String estado;
+    public EstadosEjemplar estado;
 
     public Ejemplar() {
     }
-    public Ejemplar(int codigo, Libro libro, String estado) {
+
+    public Ejemplar(int codigo, Libro libro, EstadosEjemplar estado) {
         this.codigo = codigo;
         this.libro = libro;
         this.estado = estado;
     }
-    public Ejemplar(int idEjemplar, int codigo, Libro libro, String estado) {
+
+    public Ejemplar(int idEjemplar, int codigo, Libro libro, EstadosEjemplar estado) {
         this.idEjemplar = idEjemplar;
         this.codigo = codigo;
         this.libro = libro;
@@ -47,11 +49,11 @@ public class Ejemplar {
         this.libro = libro;
     }
 
-    public String getEstado() {
+    public EstadosEjemplar getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadosEjemplar estado) {
         this.estado = estado;
     }
 
@@ -59,7 +61,5 @@ public class Ejemplar {
     public String toString() {
         return "Ejemplar{" + "idEjemplar=" + idEjemplar + ", codigo=" + codigo + ", libro=" + libro + ", estado=" + estado + '}';
     }
-    
-    
-    
+
 }
