@@ -5,10 +5,20 @@
  */
 package biblioteca.Data;
 
+import java.sql.Connection;
+
 /**
  *
  * @author lucas
  */
 public class ejemplarData {
+     private Connection con=null;
     
+    public ejemplarData(){
+        con=conexion.getConexion();
+    }
+    
+      public void stock(){
+        
+    }
 }
