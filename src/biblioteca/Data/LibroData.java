@@ -13,10 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucas
- */
 public class LibroData {
 
     private Connection con = null;
@@ -73,8 +69,24 @@ public class LibroData {
             JOptionPane.showMessageDialog(null, "error al intentar modificar el libro");
         }
     }
-
+     
+   ////Agregar buscar libro para setear el estado????????????????
+   ////Falta listar libro o lo metemos en prestamo?????????????
+    
     public void eliminarLibro(int idLibro) {
+        String sql = "UPDATE libro SET estado = 0 WHERE idLibro = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idLibro);           
+            int exito = ps.executeUpdate();
+           
+            if (exito == 1) {
 
+                JOptionPane.showMessageDialog(null, "Se desactivo el libro");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error: " + ex);
+        }
     }
 }

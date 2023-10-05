@@ -12,29 +12,38 @@ import biblioteca.Entidades.EstadosEjemplar;
 import biblioteca.Entidades.Lector;
 import biblioteca.Entidades.Libro;
 
-/**
- *
- * @author lucas
- */
 public class Biblioteca {
 
-   
     public static void main(String[] args) {
       
-        //pruebas de la clase LectorData.
+        ///PRUEBAS DE LA CLASE LECTORDATA
         
-        Lector lector = new Lector();
-        LectorData ld = new LectorData();
-        Libro lib = new Libro(1, "Caperucita roja", "Pedrito Gómez", 1985, "Cuento infantil", "Ed Planeta", true, 5);
-        Libro lib1 = new Libro(2, 1, "1974", "George Orwell", 1974, "Novela", "Ediciones ULP", true, 2);
-        LibroData lbd = new LibroData();
-        Ejemplar ej = new Ejemplar(0, lib, EstadosEjemplar.DISPONIBLE);
+         Lector lector = new Lector(14, "Juan Perez", "Jose Marmol 78", "juancito@yahoo.com.ar", 4587584, 111111, true);//metodo guardar y eliminar
+         Lector lec1 =new Lector(1, 58, "Maria Robledo", "Rivadavia 789", "mariaro@gmail.com", 25665895, 22222, true);/// metodo modificar
+         LectorData ld = new LectorData();
+        // ld.desactivarLector(1);
+        // ld.activarLector(1);    
+        //ld.guardarLector(lector);
+        ld.modificarLector(lec1); /////((((para cambiar y hacer upgrade, usamos el constructor con id)))///
         
+        ///PRUEBAS DE LA CLASE LIBRODATA
         
-//        ld.desactivarLector(1);
-       // ld.activarLector(1);
+        //Libro lib = new Libro(1, "Caperucita roja", "Pedrito Gómez", 1985, "Cuento infantil", "Ed Planeta", true, 5);
+        //Libro lib1 = new Libro(2, 1, "1974", "George Orwell", 1974, "Novela", "Ediciones ULP", true, 2);
+        //LibroData lbd = new LibroData();  
+       
         //lbd.guardarLibro(lib);
-        lbd.modificarLibro(lib1);
+        //lbd.modificarLibro(lib);   
+        //lbd.eliminarLibro(1);
+        
+       
+       ///PRUEBAS DE LA CLASE EJEMPLARDATA
+       
+        //Ejemplar ej = new Ejemplar(0, lib, EstadosEjemplar.DISPONIBLE);
+        
+        ///PRUEBAS DE LA CLASE PRESTAMODATA
+        
+
     }
     
 }
