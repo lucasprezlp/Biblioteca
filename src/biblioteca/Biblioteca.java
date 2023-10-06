@@ -34,7 +34,7 @@ public class Biblioteca {
         
         ///PRUEBAS DE LA CLASE LIBRODATA
         
-        Libro lib = new Libro(1, "Caperucita roja", "Pedrito Gómez", 1985, "Cuento infantil", "Ed Planeta", true, 5);
+//        Libro lib = new Libro(1, "Caperucita roja", "Pedrito Gómez", 1985, "Cuento infantil", "Ed Planeta", true, 5);
 //        Libro lib1 = new Libro(2, 1, "1974", "George Orwell", 1974, "Novela", "Ediciones ULP", true, 2);
         LibroData lbd = new LibroData();  
        
@@ -42,18 +42,18 @@ public class Biblioteca {
         //lbd.modificarLibro(lib);   
         //lbd.eliminarLibro(1);
         
-        for(Libro lib : lbd.listarLibrosXautor("Gabriel García Márquez")){
-            System.out.println("titulo "+ lib.getTitulo());
-            System.out.println("numEjemplares "+ lib.getNumEjemplares());
+        for(Libro lib1: lbd.listarLibrosXautor("Gabriel García Márquez")){
+            System.out.println("titulo "+ lib1.getTitulo());
+            System.out.println("numEjemplares "+ lib1.getNumEjemplares());
         }
         
         
        
        ///PRUEBAS DE LA CLASE EJEMPLARDATA
        
-        Ejemplar ej = new Ejemplar(8, lib, EstadosEjemplar.DISPONIBLE);
-        EjemplarData ejeD = new EjemplarData();
-        ejeD.guardarEjemplar(ej);
+//        Ejemplar ej = new Ejemplar(8, lib, EstadosEjemplar.DISPONIBLE);
+//        EjemplarData ejeD = new EjemplarData();
+//        ejeD.guardarEjemplar(ej);
         
         ///PRUEBAS DE LA CLASE PRESTAMODATA
         
