@@ -6,11 +6,13 @@
 package biblioteca.Data;
 
 import biblioteca.Entidades.Libro;
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class LibroData {
@@ -71,7 +73,31 @@ public class LibroData {
     }
      
    ////Agregar buscar libro para setear el estado????????????????
-   ////Falta listar libro o lo metemos en prestamo?????????????
+  
+    public ArrayList<Libro> listarLibrosXautor(String autor){
+      String sql = "SELECT titulo, numEjemplares FROM libro WHERE autor like ?";  
+       ArrayList<Libro> libros = new ArrayList<>(); 
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, autor);
+            ResultSet rs = ps.executeQuery();
+        
+                while (rs.next()) {
+                Libro libro = new Libro();
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setNumEjemplares(rs.getInt("numEjemplares"));
+                libros.add(libro);
+                //JOptionPane.showMessageDialog(null, materias);
+                ps.close();
+
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener el libro" + ex);
+        }
+        
+     return libros;   
+    }
+    
     
     public void eliminarLibro(int idLibro) {
         String sql = "UPDATE libro SET estado = 0 WHERE idLibro = ?";
@@ -90,3 +116,5 @@ public class LibroData {
         }
     }
 }
+
+

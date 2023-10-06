@@ -38,6 +38,15 @@ public class Libro {
         this.numEjemplares = numEjemplares;
     }
 
+    
+    //se creo solo para el metodo listarlibroXAutor
+    public Libro(String titulo, int numEjemplares) { 
+        this.titulo = titulo;
+        this.numEjemplares = numEjemplares;
+    }
+    
+    
+
     public int getIdLibro() {
         return idLibro;
     }
