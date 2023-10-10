@@ -9,13 +9,13 @@ public class Libro {
    public int anio;
    public String tipo;
    public String Editor;
-   public boolean estado;
+   public EstadosEjemplar estado;
    public int numEjemplares;
 
     public Libro() {
     }
 
-    public Libro(int idLibro, int isbn, String titulo, String autor, int anio, String tipo, String Editor, boolean estado, int numEjemplares) {
+    public Libro(int idLibro, int isbn, String titulo, String autor, int anio, String tipo, String Editor, EstadosEjemplar estado, int numEjemplares) {
         this.idLibro = idLibro;
         this.isbn = isbn;
         this.titulo = titulo;
@@ -27,7 +27,7 @@ public class Libro {
         this.numEjemplares = numEjemplares;
     }
 
-    public Libro(int isbn, String titulo, String autor, int anio, String tipo, String Editor, boolean estado, int numEjemplares) {
+    public Libro(int isbn, String titulo, String autor, int anio, String tipo, String Editor, EstadosEjemplar estado, int numEjemplares) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -38,6 +38,16 @@ public class Libro {
         this.numEjemplares = numEjemplares;
     }
 
+    
+    
+    // solo para prueba
+    public Libro(int idLibro, EstadosEjemplar estado) {
+        this.idLibro = idLibro;
+        this.estado = estado;
+    }
+
+
+    
     
     //se creo solo para el metodo listarlibroXAutor
     public Libro(String titulo, int numEjemplares) { 
@@ -103,11 +113,11 @@ public class Libro {
         this.Editor = Editor;
     }
 
-    public boolean isEstado() {
+    public EstadosEjemplar isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(EstadosEjemplar estado) {
         this.estado = estado;
     }
 
@@ -117,6 +127,11 @@ public class Libro {
 
     public void setNumEjemplares(int numEjemplares) {
         this.numEjemplares = numEjemplares;
+    }
+
+    @Override
+    public String toString() {
+        return "Libro{" + "idLibro=" + idLibro + ", isbn=" + isbn + ", titulo=" + titulo + ", autor=" + autor + ", anio=" + anio + ", tipo=" + tipo + ", Editor=" + Editor + ", estado=" + estado + ", numEjemplares=" + numEjemplares + '}';
     }
 
 

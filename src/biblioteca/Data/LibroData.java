@@ -36,7 +36,7 @@ public class LibroData {
             ps.setInt(5, libro.getAnio());
             ps.setString(6, libro.getTipo());
             ps.setString(7, libro.getEditor());
-            ps.setBoolean(8, libro.isEstado());
+            ps.setString(8, libro.estado.toString()); ///////////////// pasamos de boolean a String
             ps.setInt(9, libro.getNumEjemplares());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -60,7 +60,7 @@ public class LibroData {
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditor());
-            ps.setBoolean(7, libro.isEstado());
+            ps.setString(7, libro.estado.toString());
             ps.setInt(8, libro.getNumEjemplares());
             ps.setInt(9, libro.getIdLibro());
             int exito = ps.executeUpdate();

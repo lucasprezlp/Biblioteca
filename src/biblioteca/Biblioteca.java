@@ -10,6 +10,7 @@ import biblioteca.Data.LibroData;
 import biblioteca.Data.EjemplarData;
 import biblioteca.Entidades.Ejemplar;
 import biblioteca.Entidades.EstadosEjemplar;
+import static biblioteca.Entidades.EstadosEjemplar.*;
 import biblioteca.Entidades.Lector;
 import biblioteca.Entidades.Libro;
 
@@ -34,28 +35,38 @@ public class Biblioteca {
         
         ///PRUEBAS DE LA CLASE LIBRODATA
         
-//        Libro lib = new Libro(1, "Caperucita roja", "Pedrito Gómez", 1985, "Cuento infantil", "Ed Planeta", true, 5);
+        Libro lib = new Libro(1, "Caperucita roja", "Pedrito Gómez", 1985, "Cuento infantil", "Ed Planeta", DISPONIBLE, 5);
+        Libro lib1 = new Libro(10,9,"El principito","Juancito Botaro",1974,"Novela","Ediciones ULP",REPARACION,2);
 //        Libro lib1 = new Libro(2, 1, "1974", "George Orwell", 1974, "Novela", "Ediciones ULP", true, 2);
-        LibroData lbd = new LibroData();  
-       
+//        LibroData lbd = new LibroData();  
+//        Libro lib = new Libro (9,PRESTADO);
         //lbd.guardarLibro(lib);
-        //lbd.modificarLibro(lib);   
+//        lbd.modificarLibro(lib);   
         //lbd.eliminarLibro(1);
         
-        for(Libro lib1: lbd.listarLibrosXautor("Gabriel García Márquez")){
-            System.out.println("titulo "+ lib1.getTitulo());
-            System.out.println("numEjemplares "+ lib1.getNumEjemplares());
-        }
+//        for(Libro lib1: lbd.listarLibrosXautor("Gabriel García Márquez")){
+//            System.out.println("titulo "+ lib1.getTitulo());
+//            System.out.println("numEjemplares "+ lib1.getNumEjemplares());
+//        }
         
         
        
        ///PRUEBAS DE LA CLASE EJEMPLARDATA
        
-//        Ejemplar ej = new Ejemplar(8, lib, EstadosEjemplar.DISPONIBLE);
-//        EjemplarData ejeD = new EjemplarData();
-//        ejeD.guardarEjemplar(ej);
-        
+//        Ejemplar ej = new Ejemplar(2,EstadosEjemplar.DISPONIBLE); //se usa para modificar
+        Ejemplar ej = new Ejemplar(32, lib1, EstadosEjemplar.DISPONIBLE); //se usa para guardar
+        EjemplarData ejeD = new EjemplarData();
+//        ejeD.modificarEjemplar(ej);
+//          ejeD.guardarEjemplar(ej, 2);
+//        Ejemplar ej = new Ejemplar(0, lib, EstadosEjemplar.DISPONIBLE);
+//        EjemplarData eje = new EjemplarData();
+//        ejeD.stock(10);
+//        ejeD.eliminarEjemplar(1);
+
+
         ///PRUEBAS DE LA CLASE PRESTAMODATA
+        
+        
         
 
     }
