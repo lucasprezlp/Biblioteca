@@ -28,12 +28,11 @@ public class PrestamoData {
     public void prestarEjemplar(Prestamo prestamo){
         
         String sql = "INSERT INTO prestamo(FechaInicio, FechaFin, idEjemplar, idLector, estado) "
-                + "VALUES (?,?,?,?,?)";
-        
+                + "VALUES (?,?,?,?,?)";        
          try {
              ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-             ps.setDate(1, (java.sql.Date) prestamo.getFechaInicio());
-             ps.setDate(2, (java.sql.Date) prestamo.getFechaFin());
+             ps.setDate(1, java.sql.Date.valueOf(prestamo.getFechaInicio()));
+             ps.setDate(2, java.sql.Date.valueOf(prestamo.getFechaFin()));
              ps.setInt(3,prestamo.getEjemplar().getIdEjemplar());
              ps.setInt(4,prestamo.getLector().getIdLector());
              ps.setBoolean(5,prestamo.isEstado());
@@ -46,7 +45,7 @@ public class PrestamoData {
          }
    
          } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Error");
+             JOptionPane.showMessageDialog(null, "Error" + ex);
          }
         
     }

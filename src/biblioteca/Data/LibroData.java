@@ -72,8 +72,6 @@ public class LibroData {
         }
     }
      
-   ////Agregar buscar libro para setear el estado????????????????
-  
     public ArrayList<Libro> listarLibrosXautor(String autor){
       String sql = "SELECT titulo, numEjemplares FROM libro WHERE autor like ?";  
        ArrayList<Libro> libros = new ArrayList<>(); 
@@ -97,8 +95,7 @@ public class LibroData {
         
      return libros;   
     }
-    
-    
+        
     public void eliminarLibro(int idLibro) {
         String sql = "UPDATE libro SET estado = 0 WHERE idLibro = ?";
         try {

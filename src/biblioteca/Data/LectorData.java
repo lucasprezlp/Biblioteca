@@ -18,7 +18,9 @@ public class LectorData {
     public LectorData(){
         con=conexion.getConexion();
     }
+    
     PreparedStatement ps;
+    
     public void activarLector(int idLector){
         String sql = "UPDATE lector SET estado = 1 WHERE idLector=?";
          
