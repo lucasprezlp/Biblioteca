@@ -1,27 +1,28 @@
 
 package biblioteca.Entidades;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
 public class Prestamo {
     public int idPrestamo;
-    public Date FechaInicio;
-    public Date FechaFin;
+    public LocalDate FechaInicio;
+    public LocalDate FechaFin;
     public Ejemplar Ejemplar;
     public Lector lector;
     public boolean estado;
 
     public Prestamo() {
     }
-    public Prestamo(Date FechaInicio, Date FechaFin, Ejemplar Ejemplar, Lector lector, boolean estado) {
+    public Prestamo(LocalDate FechaInicio, LocalDate FechaFin, Ejemplar Ejemplar, Lector lector, boolean estado) {
         this.FechaInicio = FechaInicio;
         this.FechaFin = FechaFin;
         this.Ejemplar = Ejemplar;
         this.lector = lector;
         this.estado = estado;
     }
-    public Prestamo(int idPrestamo, Date FechaInicio, Date FechaFin, Ejemplar Ejemplar, Lector lector, boolean estado) {
+    public Prestamo(int idPrestamo, LocalDate FechaInicio, LocalDate FechaFin, Ejemplar Ejemplar, Lector lector, boolean estado) {
         this.idPrestamo = idPrestamo;
         this.FechaInicio = FechaInicio;
         this.FechaFin = FechaFin;
@@ -36,16 +37,16 @@ public class Prestamo {
     public void setIdPrestamo(int idPrestamo) {
         this.idPrestamo = idPrestamo;
     }
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return FechaInicio;
     }
-    public void setFechaInicio(Date FechaInicio) {
+    public void setFechaInicio(LocalDate FechaInicio) {
         this.FechaInicio = FechaInicio;
     }
-    public Date getFechaFin() {
+    public LocalDate getFechaFin() {
         return FechaFin;
     }
-    public void setFechaFin(Date FechaFin) {
+    public void setFechaFin(LocalDate FechaFin) {
         this.FechaFin = FechaFin;
     }
     public Ejemplar getEjemplar() {

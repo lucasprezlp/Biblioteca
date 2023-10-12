@@ -3,12 +3,15 @@
 package biblioteca.Data;
 
 import biblioteca.Entidades.Ejemplar;
+import biblioteca.Entidades.Prestamo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Statement;
 
 
@@ -22,21 +25,28 @@ public class PrestamoData {
     
     PreparedStatement ps;
     
-    public void prestarEjemplar(Date FechaInicio,Date FechaFin,int idEjemplar,int idLector,boolean estado){
+    public void prestarEjemplar(Prestamo prestamo){
         
-        String sql = "INSERT INTO `prestamo`(`FechaInicio`, `FechaFin`, `idEjemplar`, `idLector`, `estado`) "
+        String sql = "INSERT INTO prestamo(FechaInicio, FechaFin, idEjemplar, idLector, estado) "
                 + "VALUES (?,?,?,?,?)";
         
          try {
              ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-             ps.set
-         
-         
-         
-         
-         
+             ps.setDate(1, (java.sql.Date) prestamo.getFechaInicio());
+             ps.setDate(2, (java.sql.Date) prestamo.getFechaFin());
+             ps.setInt(3,prestamo.getEjemplar().getIdEjemplar());
+             ps.setInt(4,prestamo.getLector().getIdLector());
+             ps.setBoolean(5,prestamo.isEstado());
+             ps.executeUpdate();
+             
+             ResultSet rs = ps.getGeneratedKeys();
+             if(rs.next()){
+             prestamo.setIdPrestamo(rs.getInt(1));
+             JOptionPane.showMessageDialog(null, "prestamo agregado con exito");
+         }
+   
          } catch (SQLException ex) {
-             Logger.getLogger(PrestamoData.class.getName()).log(Level.SEVERE, null, ex);
+             JOptionPane.showMessageDialog(null, "Error");
          }
         
     }

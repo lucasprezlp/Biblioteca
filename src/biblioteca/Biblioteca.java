@@ -13,6 +13,9 @@ import biblioteca.Entidades.EstadosEjemplar;
 import static biblioteca.Entidades.EstadosEjemplar.*;
 import biblioteca.Entidades.Lector;
 import biblioteca.Entidades.Libro;
+import biblioteca.Entidades.Prestamo;
+import java.time.LocalDate;
+import java.time.Month;
 
 public class Biblioteca {
 
@@ -20,7 +23,7 @@ public class Biblioteca {
       
         ///PRUEBAS DE LA CLASE LECTORDATA
         
-//         Lector lector = new Lector(14, "Juan Perez", "Jose Marmol 78", "juancito@yahoo.com.ar", 4587584, 111111, true);//metodo guardar y eliminar
+         Lector lector = new Lector(14, "Juan Perez", "Jose Marmol 78", "juancito@yahoo.com.ar", 4587584, 111111, true);//metodo guardar y eliminar
 //         Lector lec1 =new Lector(58, "Maria Robledo", "Rivadavia 789", "mariaro@gmail.com", 25665895, 22222, true);/// metodo modificar
 //         Lector lector2 = new Lector(16, "Jose armendo", "pasaje 45", "juancito@yahoo.com.ar", 45647584, 111111, true);
 //         Lector lector3 = new Lector(17, "Veronica acosta", "Ribadavia", "juancito@yahoo.com.ar", 7737584, 111111, true);
@@ -66,6 +69,8 @@ public class Biblioteca {
 
         ///PRUEBAS DE LA CLASE PRESTAMODATA
         
+        
+        Prestamo prestamo1 = new Prestamo(LocalDate.of(2020, 11, 10));
         
         
 
