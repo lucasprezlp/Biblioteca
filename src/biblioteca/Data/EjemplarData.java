@@ -2,6 +2,7 @@
 package biblioteca.Data;
 
 import biblioteca.Entidades.Ejemplar;
+import biblioteca.Entidades.EstadosEjemplar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,7 +39,7 @@ public class EjemplarData {
     }
 
     public void guardarEjemplar(Ejemplar ejemplar, int cantidad) {
-
+ //////////// terminar: setear el numero de ejemplares si el libro ya existe en la bd
         while (cantidad > 0) {
             String sql = "INSERT INTO ejemplar (codigo,idLibro,estado)"
                     + " VALUES (?,?,?)";
@@ -60,14 +61,19 @@ public class EjemplarData {
         }
     }
 
-    public void modificarEjemplar(Ejemplar ejemplar) {  /// podemos usarlo como metodo de ELIMINAR modificando el estado
-        String sql = "UPDATE ejemplar SET estado=?"
-                + "WHERE idEjemplar = ?";
+    public void modificarEjemplar(int codigo, EstadosEjemplar eje) {  /// podemos usarlo como metodo de ELIMINAR modificando el estado
+//        String sql = "UPDATE ejemplar SET estado=?"
+//                + "WHERE idEjemplar = ?";
+//        try {
+//            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            ps.setString(1, ejemplar.getEstado().toString());/////////////////////// consulta tenemos problemas en el estado en la bd 
+//            ps.setInt(2, ejemplar.getIdEjemplar());
+            String sql = "UPDATE ejemplar SET estado=?"
+                + "WHERE codigo = ?";
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, ejemplar.getEstado().toString());/////////////////////// consulta tenemos problemas en el estado en la bd 
-            ps.setInt(2, ejemplar.getIdEjemplar());
-
+            ps.setString(1, eje.toString());/////////////////////// consulta tenemos problemas en el estado en la bd 
+            ps.setInt(2, codigo);
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Ejemplar modificado con éxito");

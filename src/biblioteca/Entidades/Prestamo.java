@@ -1,11 +1,10 @@
 
 package biblioteca.Entidades;
 
-import java.time.LocalDate;
 import java.util.Date;
+import java.time.LocalDate;
 
-
-public class Prestamo {
+    public class Prestamo {
     public int idPrestamo;
     public LocalDate FechaInicio;
     public LocalDate FechaFin;
@@ -15,6 +14,17 @@ public class Prestamo {
 
     public Prestamo() {
     }
+    
+    public Prestamo(Ejemplar Ejemplar, Lector lector) {
+        this.Ejemplar = Ejemplar;
+        this.lector = lector;
+    }
+    
+        public Prestamo(LocalDate FechaInicio, Ejemplar Ejemplar) {
+        this.FechaInicio = FechaInicio;
+        this.Ejemplar = Ejemplar;
+    }
+    
     public Prestamo(LocalDate FechaInicio, LocalDate FechaFin, Ejemplar Ejemplar, Lector lector, boolean estado) {
         this.FechaInicio = FechaInicio;
         this.FechaFin = FechaFin;
@@ -30,6 +40,14 @@ public class Prestamo {
         this.lector = lector;
         this.estado = estado;
     }
+
+    
+
+
+
+
+    
+    
 
     public int getIdPrestamo() {
         return idPrestamo;

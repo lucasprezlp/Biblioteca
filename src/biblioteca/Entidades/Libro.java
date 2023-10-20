@@ -46,6 +46,10 @@ public class Libro {
         this.estado = estado;
     }
 
+    public Libro(String titulo) {
+        this.titulo = titulo;
+    }
+
 
     
     

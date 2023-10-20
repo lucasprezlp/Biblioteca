@@ -30,6 +30,12 @@ public class Ejemplar {
         this.idEjemplar = idEjemplar;
         this.estado = estado;
     }
+
+    public Ejemplar(Libro libro) {
+        this.libro = libro;
+    }
+     
+     
        
 
     public int getIdEjemplar() {

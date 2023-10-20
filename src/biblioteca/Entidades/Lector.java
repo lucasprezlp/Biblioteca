@@ -35,7 +35,15 @@ public class Lector {
         this.telefono = telefono;
         this.estado = estado;
     }
+    
 
+    public Lector(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    
+    
+    
     public int getIdLector() {
         return idLector;
     }
