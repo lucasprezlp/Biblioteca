@@ -80,9 +80,9 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Fecha de Inicio");
 
-        jlFechaDeInicio.setText("18/11/2023");
+        jlFechaDeInicio.setText("23424");
 
-        jlFechaDeDevolucion.setText("1812/2023");
+        jlFechaDeDevolucion.setText("werewrw");
 
         jrbDevolicion.setText("Devolución de ejemplar");
 
@@ -132,10 +132,10 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
                                 .addGap(156, 156, 156)
                                 .addComponent(jButton3)
                                 .addGap(29, 29, 29)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlFechaDeDevolucion)
-                            .addComponent(jlFechaDeInicio)
-                            .addComponent(jlCodigo)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlCodigo)
+                            .addComponent(jlFechaDeInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlFechaDeDevolucion, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +155,7 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jtCodigo))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,13 +175,13 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jlFechaDeInicio))
+                    .addComponent(jlFechaDeInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jrbPrestamo)
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jlFechaDeDevolucion))
+                    .addComponent(jlFechaDeDevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -213,6 +213,7 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
         }
         
         if (jrbPrestamo.isSelected()) {
+            
             Lector lector = new Lector(jtNombreCompleto.getText());
             Libro libro = new Libro(jtTituloLibro.getText());
             Ejemplar ejemplar = new Ejemplar(libro);
@@ -250,7 +251,9 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jrbPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbPrestamoActionPerformed
-        jlFechaDeInicio.setText(LocalDate.now().toString());
+
+            jlFechaDeInicio.setText(LocalDate.now().toString());
+            jlFechaDeDevolucion.setText(LocalDate.now().plusDays(30).toString());
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbPrestamoActionPerformed
 
