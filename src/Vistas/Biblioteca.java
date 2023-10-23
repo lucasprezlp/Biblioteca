@@ -4,13 +4,14 @@ package Vistas;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Biblioteca extends javax.swing.JFrame {
 
     public Biblioteca() {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setSize(700,510);
+        this.setSize(700,710);
     }
 
     @SuppressWarnings("unchecked")
@@ -39,6 +40,7 @@ public class Biblioteca extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 518));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -48,7 +50,7 @@ public class Biblioteca extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 492, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
 
         jMenu5.setText("LIBRO");
@@ -138,6 +140,16 @@ public class Biblioteca extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu4.setText("SALIR");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -150,7 +162,9 @@ public class Biblioteca extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 168, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,6 +259,29 @@ public class Biblioteca extends javax.swing.JFrame {
         escritorio.add(NuevoLector);
         escritorio.moveToFront(NuevoLector);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        // TODO add your handling code here:
+    confirmarSalida();
+}
+
+private void confirmarSalida() {
+    int confirmacion = JOptionPane.showConfirmDialog(this, "¿Seguro que deseas salir?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
+    if (confirmacion == JOptionPane.YES_OPTION) {
+        cerrarAplicacion();
+    }
+}
+
+private void cerrarAplicacion() {
+    dispose(); // Cierra el JFrame
+    System.exit(0); // Cierra la aplicación
+    
+    
+    }//GEN-LAST:event_jMenu4MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

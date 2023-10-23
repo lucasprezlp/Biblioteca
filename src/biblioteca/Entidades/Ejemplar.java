@@ -34,6 +34,10 @@ public class Ejemplar {
     public Ejemplar(Libro libro) {
         this.libro = libro;
     }
+
+    public Ejemplar(int codigo) {
+        this.codigo = codigo;
+    }
      
      
        

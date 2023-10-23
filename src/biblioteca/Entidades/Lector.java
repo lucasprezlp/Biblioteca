@@ -41,6 +41,10 @@ public class Lector {
         this.nombreCompleto = nombreCompleto;
     }
 
+    public Lector(int idLector) {
+        this.idLector = idLector;
+    }
+
     
     
     

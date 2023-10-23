@@ -95,10 +95,15 @@ public class Biblioteca {
        // boolean a =dato.isAfter(dato1);
       
 //        Prestamo prestamo1 = new Prestamo(LocalDate.of(2023, 8, 05), LocalDate.of(2023, 10, 15), ej, lector, true); //se usa para prestar ejemplar
-         Prestamo prestamo2 = new Prestamo(24,LocalDate.of(2023, 8, 05), LocalDate.of(2023, 10, 15), ej, lector, true); // se usa para devolver ejemplar
-        PrestamoData pres= new PrestamoData();
- //       pres.prestarEjemplar(prestamo1);
-//       pres.devolucion(prestamo2);
+//         Prestamo prestamo2 = new Prestamo(24,LocalDate.of(2023, 8, 05), LocalDate.of(2023, 10, 15), ej, lector, true); // se usa para devolver ejemplar
+      Libro libro = new Libro ("Cien años de soledad");
+Ejemplar ej3 = new Ejemplar(21);
+Lector lec = new Lector ("Juan Perez");
+Prestamo prestamo2 = new Prestamo(ej3,lec); // se usa para devolver ejemplar
+
+        PrestamoData pres = new PrestamoData();
+        //       pres.prestarEjemplar(prestamo1);
+        pres.devolucion(prestamo2);
 
 //for(Lector lectores : pres.lectoresMorosos()){
 //    System.out.println(lectores.toString());
