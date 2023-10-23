@@ -43,15 +43,15 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jlFechaDeInicio = new javax.swing.JLabel();
+        jlFechaDeDevolucion = new javax.swing.JLabel();
         jrbDevolicion = new javax.swing.JRadioButton();
         jrbPrestamo = new javax.swing.JRadioButton();
         jButton4 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jlCodigo = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jtCodigo = new javax.swing.JTextField();
 
@@ -80,13 +80,18 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Fecha de Inicio");
 
-        jLabel6.setText("18/11/2023");
+        jlFechaDeInicio.setText("18/11/2023");
 
-        jLabel7.setText("1812/2023");
+        jlFechaDeDevolucion.setText("1812/2023");
 
         jrbDevolicion.setText("Devolución de ejemplar");
 
         jrbPrestamo.setText("Prestamo de  ejemplar");
+        jrbPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbPrestamoActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Ejecutar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +102,7 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Código:");
 
-        jLabel9.setText("15877");
+        jlCodigo.setText("15877");
 
         jLabel10.setText("Ingrese el Código:");
 
@@ -128,9 +133,9 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
                                 .addComponent(jButton3)
                                 .addGap(29, 29, 29)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel9)))
+                            .addComponent(jlFechaDeDevolucion)
+                            .addComponent(jlFechaDeInicio)
+                            .addComponent(jlCodigo)))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,17 +175,17 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(jlFechaDeInicio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jrbPrestamo)
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel7))
+                    .addComponent(jlFechaDeDevolucion))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(jlCodigo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -244,6 +249,11 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jrbPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbPrestamoActionPerformed
+        jlFechaDeInicio.setText(LocalDate.now().toString());
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbPrestamoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
@@ -254,12 +264,12 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel jlCodigo;
+    private javax.swing.JLabel jlFechaDeDevolucion;
+    private javax.swing.JLabel jlFechaDeInicio;
     private javax.swing.JRadioButton jrbDevolicion;
     private javax.swing.JRadioButton jrbPrestamo;
     private javax.swing.JTextField jtCodigo;
