@@ -31,69 +31,18 @@ public class PrestamoData {
     
     PreparedStatement ps;
     
-    
-    
-    
-    public String buscartituloConElCodigo(int codigo){
-        String titulo="";
- 
-        String sql6="SELECT titulo FROM `libro` \n" +
-"JOIN `ejemplar` ON libro.idLibro= ejemplar.idLibro\n" +
-"WHERE codigo=?;";
-         try {
-         ps=con.prepareStatement(sql6,Statement.RETURN_GENERATED_KEYS);
-         ps.setInt(1, codigo);
-         ResultSet rs = ps.executeQuery();
-         if(rs.next()){
-             titulo=rs.getString("titulo");
-         } else {
-             JOptionPane.showMessageDialog(null, "Libro no encontrado");
-             
-         }
-             } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Error al consultar el titulo");
-
-             
-        
-    } 
-         
-    return titulo;
-    
-    }
-    
-
-    
-    
     public void prestarEjemplar(Prestamo prestamo){
         
-           try {
-            String sql = "SELECT idLector FROM lector WHERE nombreCompleto = ?;";
-            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, prestamo.getLector().getNombreCompleto());
-
-            ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(null, "Este lector no está registrado");
-                return;
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al consultar si el lector está registrado");
-        }
-
-        
-//consulto si hay libros disponibles que corresponda al código
-        String sqla = "SELECT idEjemplar, codigo, ejemplar.idLibro, ejemplar.estado FROM ejemplar\n" +
+//consulto si hay libros disponibles
+        String sql1 = "SELECT idEjemplar, codigo, ejemplar.idLibro, ejemplar.estado FROM ejemplar\n" +
 "JOIN libro ON (ejemplar.idLibro = libro.idLibro)\n" +
-"WHERE titulo =? and ejemplar.estado = 'DISPONIBLE' and ejemplar.codigo=?";
+"WHERE titulo =? and ejemplar.estado = 'DISPONIBLE' LIMIT 1";
         Ejemplar ejemplar = null;
          try {
-             ps=con.prepareStatement(sqla,Statement.RETURN_GENERATED_KEYS);
+             ps=con.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS);
              ps.setString(1,prestamo.getEjemplar().getLibro().getTitulo());
-             ps.setInt(2, prestamo.getEjemplar().getCodigo());
              ResultSet rs = ps.executeQuery();
-
              if (rs.next()){
-                 
                  ejemplar = new Ejemplar();
                  Libro libro = new Libro();
                  ejemplar.setIdEjemplar(rs.getInt("idEjemplar"));
@@ -114,27 +63,27 @@ public class PrestamoData {
 //chequeamos que el lector no sea moroso
 
 
-        String sql3 = "SELECT DISTINCT l.idLector\n"
+        String sql3 = "SELECT l.idLector\n"
                 + "FROM lector l\n"
                 + "WHERE l.nombreCompleto = ?\n"
                 + "AND NOT EXISTS (\n"
                 + "    SELECT 1\n"
                 + "    FROM prestamo p\n"
                 + "    WHERE p.idLector = l.idLector\n"
-                + "    AND (\n"
-                + "        (p.estado = 1 AND p.FechaFin < CURRENT_DATE())\n"
-                + "    )\n"
+                + "    AND (p.estado = 1 AND p.FechaFin <= CURRENT_DATE())\n"
                 + ");";
-        Lector lector = new Lector();
+                Lector lector = new Lector();
          try {
              ps = con.prepareStatement(sql3);
              ps.setString(1,prestamo.getLector().getNombreCompleto());
              ResultSet rs= ps.executeQuery();
+             
              if(rs.next()){
                 lector = new Lector(rs.getInt("idLector"));
+                 
 //                 JOptionPane.showMessageDialog(null, "lectores no morosos "+ lector);
              } else {
-                 JOptionPane.showMessageDialog(null, "Lectore morosos ");
+                 JOptionPane.showMessageDialog(null, "lectores morosos ");
                  return;
              }
              
@@ -157,7 +106,7 @@ public class PrestamoData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 prestamo.setIdPrestamo(rs.getInt(1));
-//                JOptionPane.showMessageDialog(null, "prestamo agregado con exito");
+                JOptionPane.showMessageDialog(null, "prestamo agregado con exito");
             } else {
                 JOptionPane.showMessageDialog(null, "ver el error");
             }
@@ -168,7 +117,7 @@ public class PrestamoData {
               
               int exito = ps.executeUpdate();
               if (exito ==1 ){
-//                JOptionPane.showMessageDialog(null, "Ejemplar modificado con éxito");
+                JOptionPane.showMessageDialog(null, "Ejemplar modificado con éxito");
               }
 
          } catch (SQLException ex) {
@@ -182,50 +131,36 @@ public class PrestamoData {
 
 //devolucion (cambair el estado a 0)
 
-    public void devolucion(Prestamo prestamo) {
+public void devolucion(Prestamo prestamo){
+    
+            
 
-        try {
-            //verificamos si exise el pestamo
-            String sql7 = "SELECT prestamo.idPrestamo FROM `prestamo` "
-                    + "JOIN ejemplar ON prestamo.idEjemplar=ejemplar.idEjemplar "
-                    + "JOIN lector ON prestamo.idLector=lector.idLector "
-                    + "WHERE ejemplar.codigo=? AND lector.nombreCompleto=? AND prestamo.estado=1;";
-
-            ps = con.prepareStatement(sql7);
+    
+    
+    
+    try{
+            String sql = "UPDATE ejemplar SET estado='DISPONIBLE' WHERE codigo=?";
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, prestamo.getEjemplar().getCodigo());
-            ps.setString(2, prestamo.getLector().getNombreCompleto());
-            ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
 
-                        //modificamos el ejemplar a diponible
-                        String sql = "UPDATE ejemplar SET estado='DISPONIBLE' WHERE codigo=?";
-                        ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                        ps.setInt(1, prestamo.getEjemplar().getCodigo());
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+//                JOptionPane.showMessageDialog(null, "Ejemplar modificado con éxito");
+            }
 
-                        int exito = ps.executeUpdate();
-                        if (exito == 1) {
-                            //                JOptionPane.showMessageDialog(null, "Ejemplar modificado con éxito");
-                        }
-                        // modificamos prestamo colancado 0 en su estado
-                        String sql1 = "UPDATE prestamo\n"
-                                + "JOIN lector ON prestamo.idLector = lector.idLector\n"
-                                + "JOIN ejemplar ON prestamo.idEjemplar = ejemplar.idEjemplar\n"
-                                + "SET prestamo.estado = 0\n"
-                                + "WHERE lector.nombreCompleto =?  AND ejemplar.codigo = ?";
-                        ps = con.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
-                        ps.setString(1, prestamo.getLector().getNombreCompleto());
-                        ps.setInt(2, prestamo.getEjemplar().getCodigo());
+            String sql1 = "UPDATE prestamo\n" +
+"JOIN lector ON prestamo.idLector = lector.idLector\n" +
+"JOIN ejemplar ON prestamo.idEjemplar = ejemplar.idEjemplar\n" +
+"SET prestamo.estado = 0\n" +
+"WHERE lector.nombreCompleto =?  AND ejemplar.codigo = ?";
+            ps = con.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, prestamo.getLector().getNombreCompleto());
+            ps.setInt(2, prestamo.getEjemplar().getCodigo());
 
-                        int exito1 = ps.executeUpdate();
-                        if (exito1 == 1) {
-        //                JOptionPane.showMessageDialog(null, "Prestamo modificado con éxito");
-                        }
-
-                        JOptionPane.showMessageDialog(null, "Devolución Exitosa");
-                } else {
-                         JOptionPane.showMessageDialog(null, "No hay evolución pendiente con este nombre y libro. Por favor verifique los datos");
-                }
-
+            int exito1 = ps.executeUpdate();
+            if (exito1 == 1) {
+                JOptionPane.showMessageDialog(null, "Prestamo modificado con éxito");
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error" + ex);
         }
