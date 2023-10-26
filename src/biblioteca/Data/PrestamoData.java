@@ -132,12 +132,7 @@ public class PrestamoData {
 //devolucion (cambair el estado a 0)
 
 public void devolucion(Prestamo prestamo){
-    
-            
-
-    
-    
-    
+   
     try{
             String sql = "UPDATE ejemplar SET estado='DISPONIBLE' WHERE codigo=?";
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

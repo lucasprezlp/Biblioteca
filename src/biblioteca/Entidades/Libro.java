@@ -9,13 +9,13 @@ public class Libro {
    public int anio;
    public String tipo;
    public String Editor;
-   public EstadosEjemplar estado;
+   public boolean estado;
    public int numEjemplares;
 
     public Libro() {
     }
 
-    public Libro(int idLibro, int isbn, String titulo, String autor, int anio, String tipo, String Editor, EstadosEjemplar estado, int numEjemplares) {
+    public Libro(int idLibro, int isbn, String titulo, String autor, int anio, String tipo, String Editor, boolean estado, int numEjemplares) {
         this.idLibro = idLibro;
         this.isbn = isbn;
         this.titulo = titulo;
@@ -27,7 +27,7 @@ public class Libro {
         this.numEjemplares = numEjemplares;
     }
 
-    public Libro(int isbn, String titulo, String autor, int anio, String tipo, String Editor, EstadosEjemplar estado, int numEjemplares) {
+    public Libro(int isbn, String titulo, String autor, int anio, String tipo, String Editor, boolean estado, int numEjemplares) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -41,7 +41,7 @@ public class Libro {
     
     
     // solo para prueba
-    public Libro(int idLibro, EstadosEjemplar estado) {
+    public Libro(int idLibro, boolean estado) {
         this.idLibro = idLibro;
         this.estado = estado;
     }
@@ -53,18 +53,13 @@ public class Libro {
     public Libro(int idLibro) {
         this.idLibro = idLibro;
     }
-
-
-    
-    
+ 
     //se creo solo para el metodo listarlibroXAutor
     public Libro(String titulo, int numEjemplares) { 
         this.titulo = titulo;
         this.numEjemplares = numEjemplares;
     }
-    
-    
-
+ 
     public int getIdLibro() {
         return idLibro;
     }
@@ -121,11 +116,11 @@ public class Libro {
         this.Editor = Editor;
     }
 
-    public EstadosEjemplar isEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
-    public void setEstado(EstadosEjemplar estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 

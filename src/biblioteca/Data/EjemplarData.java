@@ -3,11 +3,13 @@ package biblioteca.Data;
 
 import biblioteca.Entidades.Ejemplar;
 import biblioteca.Entidades.EstadosEjemplar;
+import biblioteca.Entidades.Libro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class EjemplarData {
@@ -100,6 +102,31 @@ public class EjemplarData {
         }
     }
     
+    public ArrayList<Ejemplar> listarLibrosXautor(String autor){
+      String sql = "SELECT idEjemplar, codigo, idLibro FROM ejemplar WHERE estado= DISPONIBLE";
+       ArrayList<Ejemplar> ejem = new ArrayList<>(); 
+        try {
+            ps = con.prepareStatement(sql);
+           // ps.setString(1, estado);
+            ResultSet rs = ps.executeQuery();
+                    while (rs.next()) {
+                        Ejemplar ejemplar= new Ejemplar();
+                ejemplar.setIdEjemplar(rs.getInt("idEjemplar"));
+                ejemplar.setCodigo(rs.getInt("codigo"));
+                Libro lib= new Libro(rs.getInt("idLibro"));
+                ejemplar.setLibro(lib);
+                //ejemplar.setEstados(rs.get);
+                ejem.add(ejemplar);
+                //JOptionPane.showMessageDialog(null, ejemplar);
+                ps.close();
+
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener el libro" + ex);
+        }
+        
+     return ejem;   
+    }
 
      }
      

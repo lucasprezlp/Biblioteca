@@ -5,6 +5,7 @@
  */
 package biblioteca.Data;
 
+import biblioteca.Entidades.EstadosEjemplar;
 import biblioteca.Entidades.Libro;
 import java.awt.List;
 import java.sql.Connection;
@@ -36,7 +37,8 @@ public class LibroData {
             ps.setInt(5, libro.getAnio());
             ps.setString(6, libro.getTipo());
             ps.setString(7, libro.getEditor());
-            ps.setString(8, libro.estado.toString()); ///////////////// pasamos de boolean a String
+            ps.setBoolean(8, libro.isEstado());
+           // ps.setString(8, libro.estado.toString()); ///////////////// pasamos de boolean a String
             ps.setInt(9, libro.getNumEjemplares());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -48,6 +50,54 @@ public class LibroData {
             JOptionPane.showMessageDialog(null, "Ingrese un id correcto/diferente");
         }
     }
+    
+    public Libro buscarLibroXTitulo(String titulo) {
+        String sql = "SELECT idLibro, isbn, titulo, autor, anio, tipo, Editor, numEjemplares"
+                + " FROM libro WHERE titulo = ? and estado = 1";
+        Libro libro=null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, titulo);
+            ResultSet rs= ps.executeQuery();
+            if(rs.next()){
+                libro= new Libro();
+                libro.setIdLibro(rs.getInt("idLibro"));
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(rs.getString("autor"));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(rs.getString("tipo"));
+                libro.setEditor(rs.getString("Editor"));
+                libro.setEstado(rs.getBoolean(1));
+                //libro.setEstado(EstadosEjemplar.DISPONIBLE);
+                libro.setNumEjemplares(rs.getInt("numEjemplares"));
+
+            }   else{
+                JOptionPane.showMessageDialog(null, "No existe el libro");
+            }
+ 
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error al acceder a la tabla");
+            System.out.println(ex);
+        }
+        return libro;
+    }
+    
+    public int buscarIdxNombre(String titulo) {
+        String sql = "SELECT idLibro FROM libro WHERE titulo = ?";
+        int idLibro = -1;
+        try {
+             ps = con.prepareStatement(sql);
+             ps.setString(1, titulo);
+             ResultSet rs = ps.executeQuery();
+            if (rs.next()) 
+                idLibro = rs.getInt("idLibro");             
+
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al obtener el idLibro portitulo en la base de datos: " + ex.getMessage());
+        } 
+        return idLibro;         
+        }
 
     public void modificarLibro(Libro libro) {
         String sql = "UPDATE libro SET isbn=?, titulo=?, autor=?, anio=?, tipo=?, editor=?, estado=?, numEjemplares=? "
@@ -60,7 +110,8 @@ public class LibroData {
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditor());
-            ps.setString(7, libro.estado.toString());
+            ps.setBoolean(7, libro.isEstado());
+            //ps.setString(7, libro.estado.toString());
             ps.setInt(8, libro.getNumEjemplares());
             ps.setInt(9, libro.getIdLibro());
             int exito = ps.executeUpdate();
@@ -73,7 +124,7 @@ public class LibroData {
     }
      
     public ArrayList<Libro> listarLibrosXautor(String autor){
-      String sql = "SELECT titulo, numEjemplares FROM libro WHERE autor like ?";  
+      String sql = "SELECT isbn, titulo, Editor, numEjemplares FROM libro WHERE autor like ?";
        ArrayList<Libro> libros = new ArrayList<>(); 
         try {
             ps = con.prepareStatement(sql);
@@ -82,7 +133,9 @@ public class LibroData {
         
                 while (rs.next()) {
                 Libro libro = new Libro();
+                libro.setIsbn(rs.getInt("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
+                libro.setEditor(rs.getString("Editor"));                
                 libro.setNumEjemplares(rs.getInt("numEjemplares"));
                 libros.add(libro);
                 //JOptionPane.showMessageDialog(null, materias);
