@@ -50,9 +50,6 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    
-    
-    
     public Libro(int idLibro) {
         this.idLibro = idLibro;
     }

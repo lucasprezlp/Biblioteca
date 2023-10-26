@@ -35,15 +35,6 @@ public class Ejemplar {
         this.libro = libro;
     }
 
-    public Ejemplar(int codigo, Libro libro) {
-        this.codigo = codigo;
-        this.libro = libro;
-    }
-    
-    
-    
-    
-
     public Ejemplar(int codigo) {
         this.codigo = codigo;
     }
