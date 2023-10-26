@@ -177,6 +177,9 @@ public class PrestamoData {
               JOptionPane.showMessageDialog(null, "Prestamo exitoso.");
     }
    
+    
+    
+    
 
 // como hacer para que el metodo de transformar a moroso sea automatico
 
