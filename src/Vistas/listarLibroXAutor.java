@@ -12,6 +12,7 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
     private LibroData libData;
     private Libro libroActual;
     private DefaultTableModel modelo;
+    
     public listarLibroXAutor() { 
         initComponents();
         libData= new LibroData();
@@ -140,11 +141,6 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTLibros;
     // End of variables declaration//GEN-END:variables
-//    private void cargarLibro(){
-//        for(Libro item: listalib){
-//            jCBAutor.addItem("item");
-//        }
-//    }
     private void armarCabeceraTable(){
       ArrayList<Object> filaCabecera = new ArrayList<>();
         filaCabecera.add("ISBN");
@@ -161,23 +157,29 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
         for (int i = indice; i >= 0; i--) {
             modelo.removeRow(i);
         }
-    }
-    private void cargarLibros() {
-        try {
-                   for(Libro item: listalib){
-            jCBAutor.addItem("item");
+    }        
+        private void cargarLibros() {
+    try {
+        listalib = libData.listarLibrosXautor("autor");
+        
+        jCBAutor.removeAllItems();
+        
+        for (Libro item : listalib) {
+            jCBAutor.addItem(item.getAutor());
+            JOptionPane.showMessageDialog(null, "Y??????");
         }
-            if (libroActual != null) {
-                Libro selec = (Libro) jCBAutor.getSelectedItem();
-                String autor = selec.autor;
-                listalib = libData.listarLibrosXautor("autor");
-                for (Libro libroActual : listalib) {
-                   
-                    modelo.addRow(new Object[]{libroActual.getIsbn(), libroActual.getTitulo(), libroActual.getEditor(), libroActual.getNumEjemplares()});
-                }
+        
+        if (!listalib.isEmpty()) {
+            
+            modelo.setRowCount(0); 
+            
+            for (Libro libroActual : listalib) {
+                modelo.addRow(new Object[]{libroActual.getIsbn(), libroActual.getTitulo(), libroActual.getEditor(), libroActual.getNumEjemplares()});
             }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un autor válido");
         }
-     }   
-}
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al cargar los libros: " + ex.getMessage());
+    }
+}  
+}   
+

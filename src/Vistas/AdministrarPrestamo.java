@@ -251,6 +251,7 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
 
     private void jrbPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbPrestamoActionPerformed
         jlFechaDeInicio.setText(LocalDate.now().toString());
+        jlFechaDeDevolucion.setText(LocalDate.now().plusDays(30).toString());
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbPrestamoActionPerformed
 

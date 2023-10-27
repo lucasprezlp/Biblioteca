@@ -138,10 +138,12 @@ public class LibroData {
                 libro.setEditor(rs.getString("Editor"));                
                 libro.setNumEjemplares(rs.getInt("numEjemplares"));
                 libros.add(libro);
-                //JOptionPane.showMessageDialog(null, materias);
-                ps.close();
-
+                //JOptionPane.showMessageDialog(null, libro);
+                
             }
+            rs.close();
+            ps.close();
+               
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al obtener el libro" + ex);
         }

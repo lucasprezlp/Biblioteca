@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class ModificarLibro extends javax.swing.JInternalFrame {
     private LibroData libData = new LibroData();
-    private Libro libroActual = null;
+    private Libro libroActual;
 
     public ModificarLibro() {
         initComponents();
@@ -293,7 +293,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
     try{
-        if(libroActual!=null){
+        
         String titulo= jtNombreDelLibro.getText();
         Integer isbn= Integer.parseInt(jTFISBN.getText());
         String autor= jTFAutor.getText();
@@ -303,8 +303,11 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         Boolean estado= jRBEstado.isSelected();
         Integer numEje=Integer.parseInt(jTFnumEjemplares.getText());
         
+        if(libroActual==null){
         Libro libro= new Libro(isbn, titulo, autor, anio, genero, editor, estado, numEje);
         libData.guardarLibro(libro);
+        JOptionPane.showMessageDialog(null, "Libro guardado con éxito");
+        
         }else{
             JOptionPane.showMessageDialog(null, "Libro ya ingresado");
         }
