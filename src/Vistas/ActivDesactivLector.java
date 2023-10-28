@@ -32,11 +32,12 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTFNombreLector = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jBbuscar = new javax.swing.JButton();
         jLEstado = new javax.swing.JLabel();
+        jBSalir = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 255));
         setClosable(true);
@@ -44,10 +45,14 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
 
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 153));
         jLabel1.setText("Activar/desactivar lectores");
 
+        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel2.setText("Escriba nombre del lector");
 
+        jRadioButton1.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
         jRadioButton1.setText("Activar lector");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +60,7 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
             }
         });
 
+        jRadioButton2.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
         jRadioButton2.setText("Desactivar lector");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,114 +68,98 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
             }
         });
 
-        jBbuscar.setText("Buscar");
-        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbuscarActionPerformed(evt);
-            }
-        });
+        jBbuscar.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
+        jBbuscar.setText("BUSCAR");
 
+        jLEstado.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLEstado.setText("Estado del lector");
+
+        jBSalir.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
+        jBSalir.setText("SALIR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(188, 188, 188)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(248, 248, 248)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2)
-                                .addGap(31, 31, 31)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addComponent(jBbuscar)))
-                        .addGap(61, 61, 61))
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTFNombreLector, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLEstado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1))
-                .addGap(19, 19, 19))
+                        .addGap(30, 30, 30)
+                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLEstado)))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jRadioButton2)
-                        .addGap(28, 28, 28)
-                        .addComponent(jRadioButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBbuscar))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLEstado)))
-                .addGap(41, 41, 41))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFNombreLector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBbuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton2)
+                    .addComponent(jLEstado)
+                    .addComponent(jBSalir))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-        ///buscar el lector en la base de datos
-        String st = jTextField1.getText();
-        lec.buscarLector(st);
-        Boolean l = lec.EstadoLector(st); 
-    
-    if (l == false) {
-        jLEstado.setText("LECTOR INHABILITADO");
-    } else {
-        jLEstado.setText("LECTOR ACTIVO");
-    }
-    }//GEN-LAST:event_jBbuscarActionPerformed
-
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
-                String st = jTextField1.getText();
+                String st = jTFNombreLector.getText();
         lec.desactivarLector(lec.obtenerIdLectorPorNombre(st));
        if (jRadioButton2.isSelected()) {
-        jRadioButton1.setSelected(false);
-                jLEstado.setText("LECTOR INHABILITADO");
+        jRadioButton1.setEnabled(false);
     } else {
-        //jRadioButton1.setEnabled(true);
-                        jLEstado.setText("Estado del lector");
+        jRadioButton1.setEnabled(true);
+        
     }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-         String st = jTextField1.getText();
+         String st = jTFNombreLector.getText();
         lec.activarLector(lec.obtenerIdLectorPorNombre(st));
        if (jRadioButton1.isSelected()) {
-        jRadioButton2.setSelected(false);
-                jLEstado.setText("LECTOR ACTIVO");
+        jRadioButton2.setEnabled(false);
     } else {
-       // jRadioButton2.setEnabled(true);
-                                jLEstado.setText("Estado del lector");          
+        jRadioButton2.setEnabled(true);
+        
+            
     }//GEN-LAST:event_jRadioButton1ActionPerformed
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBSalir;
     private javax.swing.JButton jBbuscar;
     private javax.swing.JLabel jLEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTFNombreLector;
     // End of variables declaration//GEN-END:variables
 }

@@ -253,65 +253,60 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFAnioActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        // TODO add your handling code here: 
+ 
         try {
-          
+
             libroActual = libData.buscarLibroXTitulo(jtNombreDelLibro.getText());
-            
-            if(libroActual!=null){
-                Integer isbn= libroActual.getIsbn();
-                jTFISBN.setText(isbn.toString()); 
+
+            if (libroActual != null) {
+                Integer isbn = libroActual.getIsbn();
+                jTFISBN.setText(isbn.toString());
                 jTFAutor.setText(libroActual.getAutor());
-                Integer anio=libroActual.getAnio();
+                Integer anio = libroActual.getAnio();
                 jTFAnio.setText(anio.toString());
                 jTFEditor.setText(libroActual.getEditor());
                 jTFTipo.setText(libroActual.getTipo());
                 jRBEstado.setSelected(libroActual.isEstado());
-                Integer numEje= libroActual.getNumEjemplares();
+                Integer numEje = libroActual.getNumEjemplares();
                 jTFnumEjemplares.setText(numEje.toString());
             }
 
-        } catch (NumberFormatException ex){
-            JOptionPane.showMessageDialog(this,"Debe ingresar un titulo válido");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un titulo válido");
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-        jtNombreDelLibro.setText("");
-        //Integer isbn= libroActual.getIsbn();
-        jTFISBN.setText(""); 
-        jTFAutor.setText("");
-        //Integer anio=libroActual.getAnio();
-        jTFAnio.setText("");
+        jtNombreDelLibro.setText("");jTFISBN.setText(""); 
+        jTFAutor.setText(""); jTFAnio.setText("");
         jTFEditor.setText("");
         jTFTipo.setText("");
-        jRBEstado.setSelected(false);
-        //Integer numEje= libroActual.getNumEjemplares();
-        jTFnumEjemplares.setText("");
+        jRBEstado.setSelected(false);jTFnumEjemplares.setText("");
         
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-    try{
-        
-        String titulo= jtNombreDelLibro.getText();
-        Integer isbn= Integer.parseInt(jTFISBN.getText());
-        String autor= jTFAutor.getText();
-        Integer anio=Integer.parseInt(jTFAnio.getText());
-        String editor= jTFEditor.getText();
-        String genero=jTFTipo.getText();
-        Boolean estado= jRBEstado.isSelected();
-        Integer numEje=Integer.parseInt(jTFnumEjemplares.getText());
-        
-        if(libroActual==null){
-        Libro libro= new Libro(isbn, titulo, autor, anio, genero, editor, estado, numEje);
-        libData.guardarLibro(libro);
-        JOptionPane.showMessageDialog(null, "Libro guardado con éxito");
-        
-        }else{
-            JOptionPane.showMessageDialog(null, "Libro ya ingresado");
-        }
-        }catch(NumberFormatException ex){
+   
+        try {
+
+            String titulo = jtNombreDelLibro.getText();
+            Integer isbn = Integer.parseInt(jTFISBN.getText());
+            String autor = jTFAutor.getText();
+            Integer anio = Integer.parseInt(jTFAnio.getText());
+            String editor = jTFEditor.getText();
+            String genero = jTFTipo.getText();
+            Boolean estado = jRBEstado.isSelected();
+            Integer numEje = Integer.parseInt(jTFnumEjemplares.getText());
+
+            if (libroActual == null) {
+                Libro libro = new Libro(isbn, titulo, autor, anio, genero, editor, estado, numEje);
+                libData.guardarLibro(libro);
+                JOptionPane.showMessageDialog(null, "Libro guardado con éxito");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Libro ya ingresado");
+            }
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese datos válidos");
         }
     }//GEN-LAST:event_jBGuardarActionPerformed

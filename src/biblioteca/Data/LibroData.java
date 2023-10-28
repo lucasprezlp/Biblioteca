@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package biblioteca.Data;
 
 import biblioteca.Entidades.EstadosEjemplar;
@@ -37,9 +33,7 @@ public class LibroData {
             ps.setInt(5, libro.getAnio());
             ps.setString(6, libro.getTipo());
             ps.setString(7, libro.getEditor());
-            ps.setBoolean(8, libro.isEstado());
-           // ps.setString(8, libro.estado.toString()); ///////////////// pasamos de boolean a String
-            ps.setInt(9, libro.getNumEjemplares());
+            ps.setBoolean(8, libro.isEstado());ps.setInt(9, libro.getNumEjemplares());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -68,16 +62,14 @@ public class LibroData {
                 libro.setAnio(rs.getInt("anio"));
                 libro.setTipo(rs.getString("tipo"));
                 libro.setEditor(rs.getString("Editor"));
-                libro.setEstado(rs.getBoolean(1));
-                //libro.setEstado(EstadosEjemplar.DISPONIBLE);
-                libro.setNumEjemplares(rs.getInt("numEjemplares"));
+                libro.setEstado(rs.getBoolean(1));libro.setNumEjemplares(rs.getInt("numEjemplares"));
 
             }   else{
-                JOptionPane.showMessageDialog(null, "No existe el libro");
+                JOptionPane.showMessageDialog(null, "Libro inactivo");
             }
  
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
             System.out.println(ex);
         }
         return libro;
@@ -110,9 +102,7 @@ public class LibroData {
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditor());
-            ps.setBoolean(7, libro.isEstado());
-            //ps.setString(7, libro.estado.toString());
-            ps.setInt(8, libro.getNumEjemplares());
+            ps.setBoolean(7, libro.isEstado());ps.setInt(8, libro.getNumEjemplares());
             ps.setInt(9, libro.getIdLibro());
             int exito = ps.executeUpdate();
             if (exito == 1) {
@@ -138,7 +128,6 @@ public class LibroData {
                 libro.setEditor(rs.getString("Editor"));                
                 libro.setNumEjemplares(rs.getInt("numEjemplares"));
                 libros.add(libro);
-                //JOptionPane.showMessageDialog(null, libro);
                 
             }
             rs.close();

@@ -2,7 +2,7 @@
 package biblioteca.Entidades;
 
 public class Libro {
-    public int idLibro;
+   public int idLibro;
    public int isbn;
    public String titulo;
    public String autor;
@@ -38,9 +38,6 @@ public class Libro {
         this.numEjemplares = numEjemplares;
     }
 
-    
-    
-    // solo para prueba
     public Libro(int idLibro, boolean estado) {
         this.idLibro = idLibro;
         this.estado = estado;
@@ -50,11 +47,17 @@ public class Libro {
         this.titulo = titulo;
     }
 
+    public Libro(int isbn, String titulo, String Editor, int numEjemplares) {
+        this.isbn = isbn;
+        this.titulo = titulo;
+        this.Editor = Editor;
+        this.numEjemplares = numEjemplares;
+    }
+
     public Libro(int idLibro) {
         this.idLibro = idLibro;
     }
- 
-    //se creo solo para el metodo listarlibroXAutor
+
     public Libro(String titulo, int numEjemplares) { 
         this.titulo = titulo;
         this.numEjemplares = numEjemplares;
@@ -136,9 +139,5 @@ public class Libro {
     public String toString() {
         return "Libro{" + "idLibro=" + idLibro + ", isbn=" + isbn + ", titulo=" + titulo + ", autor=" + autor + ", anio=" + anio + ", tipo=" + tipo + ", Editor=" + Editor + ", estado=" + estado + ", numEjemplares=" + numEjemplares + '}';
     }
-
-
-   
-   
-   
+ 
 }
