@@ -56,12 +56,12 @@ public class Biblioteca {
 //        lbd.modificarLibro(lib);   
         //lbd.eliminarLibro(1);
         
-        for(Libro lib1: lbd.listarLibrosXautor("Gabriel García Márquez")){
-            System.out.println("ISBN : " + lib1.getIsbn());
-            System.out.println("titulo : "+ lib1.getTitulo());
-            System.out.println("Editor : "+lib1.getEditor());
-            System.out.println("numEjemplares : "+ lib1.getNumEjemplares());
-        }
+//        for(Libro lib1: lbd.listarLibrosXautor("Gabriel García Márquez")){
+//            System.out.println("ISBN : " + lib1.getIsbn());
+//            System.out.println("titulo : "+ lib1.getTitulo());
+//            System.out.println("Editor : "+lib1.getEditor());
+//            System.out.println("numEjemplares : "+ lib1.getNumEjemplares());
+//        }
 
        ///PRUEBAS DE LA CLASE EJEMPLARDATA
        

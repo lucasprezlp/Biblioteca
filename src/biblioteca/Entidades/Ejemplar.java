@@ -24,6 +24,14 @@ public class Ejemplar {
         this.libro = libro;
         this.estado = estado;
     }
+
+    public Ejemplar(Libro libro, int codigo, EstadosEjemplar estado) {
+        this.libro = libro;
+        this.codigo = codigo;
+        this.estado = estado;
+    }
+    
+    
     
     
      public Ejemplar(int idEjemplar, EstadosEjemplar estado) { // para hacer el metodo modificarejemplar

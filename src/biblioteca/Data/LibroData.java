@@ -1,6 +1,7 @@
 
 package biblioteca.Data;
 
+import biblioteca.Entidades.Ejemplar;
 import biblioteca.Entidades.EstadosEjemplar;
 import biblioteca.Entidades.Libro;
 import java.awt.List;
@@ -115,34 +116,35 @@ public class LibroData {
         }
     }
      
-    public ArrayList<Libro> listarLibrosXautor(String autor){
+    public ArrayList<Ejemplar> listarLibrosXautor(String autor) {
 
-        String sql = "SELECT isbn, titulo, Editor, numEjemplares FROM libro WHERE autor like ?";
-        ArrayList<Libro> libros = new ArrayList<>();
+        String sqla = "SELECT titulo, Editor, ejemplar.codigo, ejemplar.estado  FROM `libro`\n"
+                + "JOIN ejemplar on (libro.idLibro = ejemplar.idLibro)\n"
+                + "WHERE libro.estado=1 and autor like ?;";
+        ArrayList<Ejemplar> ejemplares = new ArrayList<>();
         try {
-            ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sqla);
             ps.setString(1, autor);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 Libro libro = new Libro();
-                libro.setIsbn(rs.getInt("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setEditor(rs.getString("Editor"));
-                libro.setNumEjemplares(rs.getInt("numEjemplares"));
-                libros.add(libro);
+                Ejemplar eje = new Ejemplar(libro, rs.getInt("codigo"), EstadosEjemplar.valueOf(rs.getString("estado")));
 
+                ejemplares.add(eje);
             }
             rs.close();
             ps.close();
-               
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al obtener el libro" + ex);
         }
-        
-     return libros;   
+
+        return ejemplares;
     }
-        
+    
     public void eliminarLibro(int idLibro) {
 
         String sql = "UPDATE libro SET estado = 0 WHERE idLibro = ?";

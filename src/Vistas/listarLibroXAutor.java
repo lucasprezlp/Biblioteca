@@ -1,6 +1,7 @@
 package Vistas;
 
 import biblioteca.Data.LibroData;
+import biblioteca.Entidades.Ejemplar;
 import biblioteca.Entidades.Libro;
 import java.awt.List;
 import java.util.ArrayList;
@@ -8,17 +9,17 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class listarLibroXAutor extends javax.swing.JInternalFrame {
-    private ArrayList<Libro> listalib;
+    private ArrayList<Ejemplar> listalib;
     private LibroData libData;
     private Libro libroActual;
     private DefaultTableModel modelo;
     
     public listarLibroXAutor() { 
         initComponents();
-        //libData= new LibroData();
-        //listalib=libData.listarLibrosXautor("autor");
+        libData = new LibroData();
+//        listalib=libData.listarLibrosXautor(jTFAutor.getText());
         modelo= new DefaultTableModel();
-        cargarLibros(libroActual);
+//        cargarLibros(libroActual);
         armarCabeceraTable();
     }
 
@@ -127,35 +128,18 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-//       
-//        String autor=jTFAutor.getText();
-//      
-//        // Libro lib= new Libro(WIDTH, title, autor, PROPERTIES);
-//        try {                              
-//        listalib = libData.listarLibrosXautor(autor);
-//        
-//        //jTFAutor.removeAllItems();
-//        if (!listalib.isEmpty()) {
-//            
-//         //   modelo.setRowCount(0); 
-//        for (Libro item : listalib) {
-//            cargarLibros(item);
-//            //jTFAutor.addItem(item.getAutor());
-//            JOptionPane.showMessageDialog(null, "Y??????");
-//        }
-//        
-//       // if (!listalib.isEmpty()) {
-//            
-//         //   modelo.setRowCount(0); 
-//            
-//          //  for (Libro libroActual : listalib) {
-//           //     modelo.addRow(new Object[]{libroActual.getIsbn(), libroActual.getTitulo(), libroActual.getEditor(), libroActual.getNumEjemplares()});
-//          //  }
-//        }
-//    } catch (Exception ex) {
-//        JOptionPane.showMessageDialog(this, "Error al cargar los libros: " + ex.getMessage());
-//    }
+       
+        // ver si el usuario no se ingreso nada manejar la ex
         
+        String autor=jTFAutor.getText();
+//        libData = new LibroData();
+ 
+        for(Ejemplar ejem: libData.listarLibrosXautor(autor)){
+            modelo.addRow(new Object[]{ejem.getLibro().getTitulo(),
+                ejem.getCodigo(),ejem.getLibro().getEditor(),ejem.getEstado()
+            });
+        }
+         JOptionPane.showMessageDialog(null, "Y??????");
     }//GEN-LAST:event_jBBuscarActionPerformed
 
 
@@ -169,10 +153,10 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTLibros;
     // End of variables declaration//GEN-END:variables
     private void armarCabeceraTable(){
-        modelo.addColumn("ISBN");
         modelo.addColumn("Titulo");
-        modelo.addColumn("Editor");
-        modelo.addColumn("Número de Ejemplar");
+        modelo.addColumn("codido");
+        modelo.addColumn("Editorial");
+        modelo.addColumn("Estado");
         jTLibros.setModel(modelo);  
     }
         private void borrarFilaTabla() {
