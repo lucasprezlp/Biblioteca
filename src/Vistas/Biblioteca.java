@@ -179,6 +179,7 @@ public class Biblioteca extends javax.swing.JFrame {
         escritorio.repaint();
         ActivDesactivLector dde =new ActivDesactivLector();
         dde.setVisible(true);
+        dde.getContentPane().setBackground(new Color(204, 204, 255));
         escritorio.add(dde);
         escritorio.moveToFront(dde);
     }//GEN-LAST:event_ActivarDesactivarActionPerformed
@@ -189,6 +190,7 @@ public class Biblioteca extends javax.swing.JFrame {
         escritorio.repaint();
         AdministrarPrestamo dde =new AdministrarPrestamo();
         dde.setVisible(true);
+        dde.getContentPane().setBackground(new Color(204, 204, 255));
         escritorio.add(dde);
         escritorio.moveToFront(dde);
     }//GEN-LAST:event_AdminPrestamoActionPerformed
@@ -236,6 +238,7 @@ public class Biblioteca extends javax.swing.JFrame {
         escritorio.repaint();
         ConsultarLectorMoroso LectorMoroso = new ConsultarLectorMoroso();
         LectorMoroso.setVisible(true);
+        LectorMoroso.getContentPane().setBackground(new Color(204, 204, 255));
         escritorio.add(LectorMoroso);
         escritorio.moveToFront(LectorMoroso);
         // TODO add your handling code here:
@@ -247,6 +250,7 @@ public class Biblioteca extends javax.swing.JFrame {
         escritorio.repaint();
         AgregarLector NuevoLector = new AgregarLector();
         NuevoLector.setVisible(true);
+        NuevoLector.getContentPane().setBackground(new Color(204, 204, 255));
         escritorio.add(NuevoLector);
         escritorio.moveToFront(NuevoLector);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed

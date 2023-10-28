@@ -127,34 +127,34 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-       
-        String autor=jTFAutor.getText();
-      
-        // Libro lib= new Libro(WIDTH, title, autor, PROPERTIES);
-        try {                              
-        listalib = libData.listarLibrosXautor(autor);
-        
-        //jTFAutor.removeAllItems();
-        if (!listalib.isEmpty()) {
-            
-         //   modelo.setRowCount(0); 
-        for (Libro item : listalib) {
-            cargarLibros(item);
-            //jTFAutor.addItem(item.getAutor());
-            JOptionPane.showMessageDialog(null, "Y??????");
-        }
-        
-       // if (!listalib.isEmpty()) {
-            
-         //   modelo.setRowCount(0); 
-            
-          //  for (Libro libroActual : listalib) {
-           //     modelo.addRow(new Object[]{libroActual.getIsbn(), libroActual.getTitulo(), libroActual.getEditor(), libroActual.getNumEjemplares()});
-          //  }
-        }
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, "Error al cargar los libros: " + ex.getMessage());
-    }
+//       
+//        String autor=jTFAutor.getText();
+//      
+//        // Libro lib= new Libro(WIDTH, title, autor, PROPERTIES);
+//        try {                              
+//        listalib = libData.listarLibrosXautor(autor);
+//        
+//        //jTFAutor.removeAllItems();
+//        if (!listalib.isEmpty()) {
+//            
+//         //   modelo.setRowCount(0); 
+//        for (Libro item : listalib) {
+//            cargarLibros(item);
+//            //jTFAutor.addItem(item.getAutor());
+//            JOptionPane.showMessageDialog(null, "Y??????");
+//        }
+//        
+//       // if (!listalib.isEmpty()) {
+//            
+//         //   modelo.setRowCount(0); 
+//            
+//          //  for (Libro libroActual : listalib) {
+//           //     modelo.addRow(new Object[]{libroActual.getIsbn(), libroActual.getTitulo(), libroActual.getEditor(), libroActual.getNumEjemplares()});
+//          //  }
+//        }
+//    } catch (Exception ex) {
+//        JOptionPane.showMessageDialog(this, "Error al cargar los libros: " + ex.getMessage());
+//    }
         
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -183,7 +183,7 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
     }        
         private void cargarLibros(Libro libroActual) {
        
-            modelo.addRow(new Object[]{libroActual.getIsbn(), libroActual.getTitulo(), libroActual.getEditor(), libroActual.getNumEjemplares()});
+        //    modelo.addRow(new Object[]{libroActual.getIsbn(), libroActual.getTitulo(), libroActual.getEditor(), libroActual.getNumEjemplares()});
         
         }        
 //            try {                              
