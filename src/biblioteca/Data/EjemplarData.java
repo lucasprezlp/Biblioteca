@@ -21,27 +21,27 @@ public class EjemplarData {
  PreparedStatement ps;
  
      public int stock(int idLibro) {
-        ///agregar el autor y nombre de la obra 
-        int num = 0;
-        String sql = "SELECT COUNT(*) FROM ejemplar WHERE estado = 'DISPONIBLE' AND idLibro = ?"; // mostrar solo los libros que figuren DISPONIBLES
-        try {
-            ps = con.prepareStatement(sql);
+         ///agregar el autor y nombre de la obra 
+         int num = 0;
+         String sql = "SELECT COUNT(*) FROM ejemplar WHERE estado = 'DISPONIBLE' AND idLibro = ?"; // mostrar solo los libros que figuren DISPONIBLES
+         try {
+             ps = con.prepareStatement(sql);
 
-            ps.setInt(1, idLibro);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                int disponibles = rs.getInt("COUNT(*)");
-                num = disponibles;
-                JOptionPane.showMessageDialog(null, "el stock es de: " + disponibles);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error " + ex);
-        }
-        return num;
+             ps.setInt(1, idLibro);
+             ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                 int disponibles = rs.getInt("COUNT(*)");
+                 num = disponibles;
+                 JOptionPane.showMessageDialog(null, "el stock es de: " + disponibles);
+             }
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "error " + ex);
+         }
+         return num;
     }
 
     public void guardarEjemplar(Ejemplar ejemplar, int cantidad) {
- //////////// terminar: setear el numero de ejemplares si el libro ya existe en la bd
+        //////////// terminar: setear el numero de ejemplares si el libro ya existe en la bd
         while (cantidad > 0) {
             String sql = "INSERT INTO ejemplar (codigo,idLibro,estado)"
                     + " VALUES (?,?,?)";
@@ -64,13 +64,8 @@ public class EjemplarData {
     }
 
     public void modificarEjemplar(int codigo, EstadosEjemplar eje) {  /// podemos usarlo como metodo de ELIMINAR modificando el estado
-//        String sql = "UPDATE ejemplar SET estado=?"
-//                + "WHERE idEjemplar = ?";
-//        try {
-//            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//            ps.setString(1, ejemplar.getEstado().toString());/////////////////////// consulta tenemos problemas en el estado en la bd 
-//            ps.setInt(2, ejemplar.getIdEjemplar());
-            String sql = "UPDATE ejemplar SET estado=?"
+
+        String sql = "UPDATE ejemplar SET estado=?"
                 + "WHERE codigo = ?";
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -86,6 +81,7 @@ public class EjemplarData {
     }
 
     public void eliminarEjemplar(int idEjemplar) {
+ 
         String sql = "UPDATE ejemplar SET estado = 'NO_DISPONIBLE' WHERE idEjemplar = ?";
         try {
             ps = con.prepareStatement(sql);
@@ -103,30 +99,28 @@ public class EjemplarData {
     }
     
     public ArrayList<Ejemplar> listarLibrosXautor(String autor){
-      String sql = "SELECT idEjemplar, codigo, idLibro FROM ejemplar WHERE estado= DISPONIBLE";
-       ArrayList<Ejemplar> ejem = new ArrayList<>(); 
+   
+        String sql = "SELECT idEjemplar, codigo, idLibro FROM ejemplar WHERE estado= DISPONIBLE";
+        ArrayList<Ejemplar> ejem = new ArrayList<>();
         try {
             ps = con.prepareStatement(sql);
-           // ps.setString(1, estado);
             ResultSet rs = ps.executeQuery();
-                    while (rs.next()) {
-                        Ejemplar ejemplar= new Ejemplar();
+            while (rs.next()) {
+                Ejemplar ejemplar = new Ejemplar();
                 ejemplar.setIdEjemplar(rs.getInt("idEjemplar"));
                 ejemplar.setCodigo(rs.getInt("codigo"));
-                Libro lib= new Libro(rs.getInt("idLibro"));
+                Libro lib = new Libro(rs.getInt("idLibro"));
                 ejemplar.setLibro(lib);
-                //ejemplar.setEstados(rs.get);
                 ejem.add(ejemplar);
                 //JOptionPane.showMessageDialog(null, ejemplar);
                 ps.close();
-
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al obtener el libro" + ex);
         }
-        
-     return ejem;   
-    }
+
+        return ejem;
+    } 
 
      }
      

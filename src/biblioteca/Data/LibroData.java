@@ -19,7 +19,8 @@ public class LibroData {
     public LibroData() {
         con = conexion.getConexion();
     }
-    PreparedStatement ps;
+    
+    PreparedStatement ps; 
 
     public void guardarLibro(Libro libro) {
         String sql = "INSERT INTO libro(idLibro, isbn, titulo, autor, anio, tipo, Editor, estado, numEjemplares)"
@@ -155,7 +156,7 @@ public class LibroData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error: " + ex);
         }
-    }
+    } 
 }
 
 
