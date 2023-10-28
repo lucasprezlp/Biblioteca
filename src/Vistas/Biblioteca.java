@@ -42,7 +42,6 @@ public class Biblioteca extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 518));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -76,6 +75,11 @@ public class Biblioteca extends javax.swing.JFrame {
         jMenu5.add(jMIAdministrarLibro);
 
         jMIListarLibroXAutor.setText("Listar libro por autor");
+        jMIListarLibroXAutor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMIListarLibroXAutorMouseClicked(evt);
+            }
+        });
         jMIListarLibroXAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIListarLibroXAutorActionPerformed(evt);
@@ -220,9 +224,10 @@ public class Biblioteca extends javax.swing.JFrame {
         escritorio.repaint();
         listarLibroXAutor listaxAutor = new listarLibroXAutor();
         listaxAutor.setVisible(true);
-        listaxAutor.getContentPane().setBackground(new Color(204, 204, 255));
+//        listaxAutor.getContentPane().setBackground(new Color(204, 204, 255));
         escritorio.add(listaxAutor);
         escritorio.moveToFront(listaxAutor);
+       
     }//GEN-LAST:event_jMIListarLibroXAutorActionPerformed
 
     private void EJEMPLARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EJEMPLARActionPerformed
@@ -284,6 +289,11 @@ private void cerrarAplicacion() {
         escritorio.add(libDisponible);
         escritorio.moveToFront(libDisponible); 
     }//GEN-LAST:event_jMIMostrarEjemplarActionPerformed
+
+    private void jMIListarLibroXAutorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMIListarLibroXAutorMouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jMIListarLibroXAutorMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
