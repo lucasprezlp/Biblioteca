@@ -93,6 +93,7 @@ public class LibroData {
         }
 
     public void modificarLibro(Libro libro) {
+
         String sql = "UPDATE libro SET isbn=?, titulo=?, autor=?, anio=?, tipo=?, editor=?, estado=?, numEjemplares=? "
                 + "WHERE idLibro = ?";
         try {
@@ -115,21 +116,22 @@ public class LibroData {
     }
      
     public ArrayList<Libro> listarLibrosXautor(String autor){
-      String sql = "SELECT isbn, titulo, Editor, numEjemplares FROM libro WHERE autor like ?";
-       ArrayList<Libro> libros = new ArrayList<>(); 
+
+        String sql = "SELECT isbn, titulo, Editor, numEjemplares FROM libro WHERE autor like ?";
+        ArrayList<Libro> libros = new ArrayList<>();
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, autor);
             ResultSet rs = ps.executeQuery();
-        
-                while (rs.next()) {
+
+            while (rs.next()) {
                 Libro libro = new Libro();
                 libro.setIsbn(rs.getInt("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
-                libro.setEditor(rs.getString("Editor"));                
+                libro.setEditor(rs.getString("Editor"));
                 libro.setNumEjemplares(rs.getInt("numEjemplares"));
                 libros.add(libro);
-                
+
             }
             rs.close();
             ps.close();
@@ -142,12 +144,13 @@ public class LibroData {
     }
         
     public void eliminarLibro(int idLibro) {
+
         String sql = "UPDATE libro SET estado = 0 WHERE idLibro = ?";
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, idLibro);           
+            ps.setInt(1, idLibro);
             int exito = ps.executeUpdate();
-           
+
             if (exito == 1) {
 
                 JOptionPane.showMessageDialog(null, "Se desactivo el libro");

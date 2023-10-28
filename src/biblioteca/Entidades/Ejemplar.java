@@ -39,17 +39,10 @@ public class Ejemplar {
         this.codigo = codigo;
         this.libro = libro;
     }
-    
-    
-    
-    
 
     public Ejemplar(int codigo) {
         this.codigo = codigo;
     }
-     
-     
-       
 
     public int getIdEjemplar() {
         return idEjemplar;
@@ -86,6 +79,6 @@ public class Ejemplar {
     @Override
     public String toString() {
         return "Ejemplar{" + "idEjemplar=" + idEjemplar + ", codigo=" + codigo + ", libro=" + libro + ", estado=" + estado + '}';
-    }
+    } 
 
 }

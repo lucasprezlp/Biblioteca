@@ -27,6 +27,7 @@ public class LectorData {
     PreparedStatement ps;
 
     public void activarLector(int idLector) {
+    
         String sql = "UPDATE lector SET estado = 1 WHERE idLector=?";
 
         try {
@@ -44,6 +45,7 @@ public class LectorData {
     }
 
     public void desactivarLector(int idLector) {
+
         String sql = "UPDATE lector SET estado = 0 WHERE idLector=?";
 
         try {
@@ -61,6 +63,7 @@ public class LectorData {
     }
 
     public void guardarLector(Lector lector) {
+
         String sql = "INSERT INTO lector(nroSocio, nombreCompleto, dni, domicilio, mail, estado, telefono)"
                 + " VALUES (?,?,?,?,?,?,?)";
         try {
@@ -87,6 +90,7 @@ public class LectorData {
     }
 
     public void modificarLector(Lector lector) {
+
         String sql = "UPDATE lector SET nroSocio=?,nombreCompleto=?,domicilio=?,mail=?,dni=?,telefono=?,estado=?"
                 + " WHERE idLector=?";
         try {
@@ -115,6 +119,7 @@ public class LectorData {
     }
 
     public Lector buscarLector(String nombreLector) {
+
         String sql = "SELECT * FROM lector WHERE nombreCompleto = ?";
         Lector lectorEncontrado = null;
 
@@ -145,6 +150,7 @@ public class LectorData {
     }
 
     public int obtenerIdLectorPorNombre(String nombreCompleto) {
+
         String sql = "SELECT idLector FROM lector WHERE nombreCompleto = ?";
         int idLector = -1; // Valor por defecto en caso de que no se encuentre un lector
 
@@ -164,6 +170,7 @@ public class LectorData {
     }
 
     public Boolean EstadoLector(String nombreCompleto) {
+    
         String sql = "SELECT estado FROM lector WHERE nombreCompleto = ?";
         Boolean estado = null;
         try {

@@ -41,13 +41,13 @@ public class Libro {
     public Libro(int idLibro, boolean estado) {
         this.idLibro = idLibro;
         this.estado = estado;
-    }
+    } 
 
     public Libro(String titulo) {
         this.titulo = titulo;
     }
 
-    public Libro(int isbn, String titulo, String Editor, int numEjemplares) {
+    public Libro(int isbn, String titulo, String Editor, int numEjemplares)   {
         this.isbn = isbn;
         this.titulo = titulo;
         this.Editor = Editor;

@@ -226,6 +226,7 @@ public class Biblioteca extends javax.swing.JFrame {
         escritorio.repaint();
         listarLibroXAutor listaxAutor = new listarLibroXAutor();
         listaxAutor.setVisible(true);
+        listaxAutor.getContentPane().setBackground(new Color(204, 204, 255));
 //        listaxAutor.getContentPane().setBackground(new Color(204, 204, 255));
         escritorio.add(listaxAutor);
         escritorio.moveToFront(listaxAutor);

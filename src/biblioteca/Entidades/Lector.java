@@ -36,7 +36,6 @@ public class Lector {
         this.estado = estado;
     }
     
-
     public Lector(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
@@ -44,10 +43,7 @@ public class Lector {
     public Lector(int idLector) {
         this.idLector = idLector;
     }
-
-    
-    
-    
+ 
     public int getIdLector() {
         return idLector;
     }
