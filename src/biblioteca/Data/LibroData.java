@@ -1,6 +1,7 @@
 
 package biblioteca.Data;
 
+import biblioteca.Entidades.Ejemplar;
 import biblioteca.Entidades.EstadosEjemplar;
 import biblioteca.Entidades.Libro;
 import java.awt.List;
@@ -19,7 +20,8 @@ public class LibroData {
     public LibroData() {
         con = conexion.getConexion();
     }
-    PreparedStatement ps;
+    
+    PreparedStatement ps; 
 
     public void guardarLibro(Libro libro) {
         String sql = "INSERT INTO libro(idLibro, isbn, titulo, autor, anio, tipo, Editor, estado, numEjemplares)"
@@ -92,6 +94,7 @@ public class LibroData {
         }
 
     public void modificarLibro(Libro libro) {
+
         String sql = "UPDATE libro SET isbn=?, titulo=?, autor=?, anio=?, tipo=?, editor=?, estado=?, numEjemplares=? "
                 + "WHERE idLibro = ?";
         try {
@@ -113,40 +116,43 @@ public class LibroData {
         }
     }
      
-    public ArrayList<Libro> listarLibrosXautor(String autor){
-      String sql = "SELECT isbn, titulo, Editor, numEjemplares FROM libro WHERE autor like ?";
-       ArrayList<Libro> libros = new ArrayList<>(); 
+    public ArrayList<Ejemplar> listarLibrosXautor(String autor) {
+
+        String sqla = "SELECT titulo, Editor, ejemplar.codigo, ejemplar.estado  FROM `libro`\n"
+                + "JOIN ejemplar on (libro.idLibro = ejemplar.idLibro)\n"
+                + "WHERE libro.estado=1 and autor like ?;";
+        ArrayList<Ejemplar> ejemplares = new ArrayList<>();
         try {
-            ps = con.prepareStatement(sql);
+            ps = con.prepareStatement(sqla);
             ps.setString(1, autor);
             ResultSet rs = ps.executeQuery();
-        
-                while (rs.next()) {
+
+            while (rs.next()) {
                 Libro libro = new Libro();
-                libro.setIsbn(rs.getInt("isbn"));
                 libro.setTitulo(rs.getString("titulo"));
-                libro.setEditor(rs.getString("Editor"));                
-                libro.setNumEjemplares(rs.getInt("numEjemplares"));
-                libros.add(libro);
-                
+                libro.setEditor(rs.getString("Editor"));
+                Ejemplar eje = new Ejemplar(libro, rs.getInt("codigo"), EstadosEjemplar.valueOf(rs.getString("estado")));
+
+                ejemplares.add(eje);
             }
             rs.close();
             ps.close();
-               
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al obtener el libro" + ex);
         }
-        
-     return libros;   
+
+        return ejemplares;
     }
-        
+    
     public void eliminarLibro(int idLibro) {
+
         String sql = "UPDATE libro SET estado = 0 WHERE idLibro = ?";
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, idLibro);           
+            ps.setInt(1, idLibro);
             int exito = ps.executeUpdate();
-           
+
             if (exito == 1) {
 
                 JOptionPane.showMessageDialog(null, "Se desactivo el libro");
@@ -155,7 +161,7 @@ public class LibroData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error: " + ex);
         }
-    }
+    } 
 }
 
 

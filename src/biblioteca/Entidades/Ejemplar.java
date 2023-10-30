@@ -24,6 +24,14 @@ public class Ejemplar {
         this.libro = libro;
         this.estado = estado;
     }
+
+    public Ejemplar(Libro libro, int codigo, EstadosEjemplar estado) {
+        this.libro = libro;
+        this.codigo = codigo;
+        this.estado = estado;
+    }
+    
+    
     
     
      public Ejemplar(int idEjemplar, EstadosEjemplar estado) { // para hacer el metodo modificarejemplar
@@ -39,17 +47,10 @@ public class Ejemplar {
         this.codigo = codigo;
         this.libro = libro;
     }
-    
-    
-    
-    
 
     public Ejemplar(int codigo) {
         this.codigo = codigo;
     }
-     
-     
-       
 
     public int getIdEjemplar() {
         return idEjemplar;
@@ -86,6 +87,6 @@ public class Ejemplar {
     @Override
     public String toString() {
         return "Ejemplar{" + "idEjemplar=" + idEjemplar + ", codigo=" + codigo + ", libro=" + libro + ", estado=" + estado + '}';
-    }
+    } 
 
 }

@@ -20,8 +20,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Statement;
 
-
-
 public class PrestamoData {
      private Connection con=null;
     
@@ -31,42 +29,33 @@ public class PrestamoData {
     
     PreparedStatement ps;
     
-    
-    
-    
-    public String buscartituloConElCodigo(int codigo){
-        String titulo="";
- 
-        String sql6="SELECT titulo FROM `libro` \n" +
-"JOIN `ejemplar` ON libro.idLibro= ejemplar.idLibro\n" +
-"WHERE codigo=?;";
-         try {
-         ps=con.prepareStatement(sql6,Statement.RETURN_GENERATED_KEYS);
-         ps.setInt(1, codigo);
-         ResultSet rs = ps.executeQuery();
-         if(rs.next()){
-             titulo=rs.getString("titulo");
-         } else {
-             JOptionPane.showMessageDialog(null, "Libro no encontrado");
-             
-         }
-             } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Error al consultar el titulo");
+    public String buscartituloConElCodigo(int codigo) {
+        String titulo = "";
 
-             
-        
+        String sql6 = "SELECT titulo FROM `libro` \n"
+                + "JOIN `ejemplar` ON libro.idLibro= ejemplar.idLibro\n"
+                + "WHERE codigo=?;";
+        try {
+            ps = con.prepareStatement(sql6, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, codigo);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                titulo = rs.getString("titulo");
+            } else {
+                JOptionPane.showMessageDialog(null, "Libro no encontrado");
+
+            }
+             } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Error al consultar el titulo");    
     } 
          
     return titulo;
     
     }
-    
-
-    
-    
+  
     public void prestarEjemplar(Prestamo prestamo){
-        
-           try {
+   
+        try {
             String sql = "SELECT idLector FROM lector WHERE nombreCompleto = ?;";
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, prestamo.getLector().getNombreCompleto());
@@ -176,21 +165,6 @@ public class PrestamoData {
          }
               JOptionPane.showMessageDialog(null, "Prestamo exitoso.");
     }
-   
-    
-    
-    
-
-// como hacer para que el metodo de transformar a moroso sea automatico
-
-//devolucion (cambair el estado a 0)
-
-
-//public void devolucion(Prestamo prestamo){
-//   
-//    try{
-//            String sql = "UPDATE ejemplar SET estado='DISPONIBLE' WHERE codigo=?";
-//            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
     public void devolucion(Prestamo prestamo) {
 
@@ -205,36 +179,36 @@ public class PrestamoData {
             ps.setInt(1, prestamo.getEjemplar().getCodigo());
             ps.setString(2, prestamo.getLector().getNombreCompleto());
             ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+            if (rs.next()) {
 
-                        //modificamos el ejemplar a diponible
-                        String sql = "UPDATE ejemplar SET estado='DISPONIBLE' WHERE codigo=?";
-                        ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                        ps.setInt(1, prestamo.getEjemplar().getCodigo());
+                //modificamos el ejemplar a diponible
+                String sql = "UPDATE ejemplar SET estado='DISPONIBLE' WHERE codigo=?";
+                ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                ps.setInt(1, prestamo.getEjemplar().getCodigo());
 
-                        int exito = ps.executeUpdate();
-                        if (exito == 1) {
-                            //                JOptionPane.showMessageDialog(null, "Ejemplar modificado con éxito");
-                        }
-                        // modificamos prestamo colancado 0 en su estado
-                        String sql1 = "UPDATE prestamo\n"
-                                + "JOIN lector ON prestamo.idLector = lector.idLector\n"
-                                + "JOIN ejemplar ON prestamo.idEjemplar = ejemplar.idEjemplar\n"
-                                + "SET prestamo.estado = 0\n"
-                                + "WHERE lector.nombreCompleto =?  AND ejemplar.codigo = ?";
-                        ps = con.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
-                        ps.setString(1, prestamo.getLector().getNombreCompleto());
-                        ps.setInt(2, prestamo.getEjemplar().getCodigo());
+                int exito = ps.executeUpdate();
+                if (exito == 1) {
 
-                        int exito1 = ps.executeUpdate();
-                        if (exito1 == 1) {
-        //                JOptionPane.showMessageDialog(null, "Prestamo modificado con éxito");
-                        }
-
-                        JOptionPane.showMessageDialog(null, "Devolución Exitosa");
-                } else {
-                         JOptionPane.showMessageDialog(null, "No hay evolución pendiente con este nombre y libro. Por favor verifique los datos");
                 }
+                // modificamos prestamo colancado 0 en su estado
+                String sql1 = "UPDATE prestamo\n"
+                        + "JOIN lector ON prestamo.idLector = lector.idLector\n"
+                        + "JOIN ejemplar ON prestamo.idEjemplar = ejemplar.idEjemplar\n"
+                        + "SET prestamo.estado = 0\n"
+                        + "WHERE lector.nombreCompleto =?  AND ejemplar.codigo = ?";
+                ps = con.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1, prestamo.getLector().getNombreCompleto());
+                ps.setInt(2, prestamo.getEjemplar().getCodigo());
+
+                int exito1 = ps.executeUpdate();
+                if (exito1 == 1) {
+                    //                JOptionPane.showMessageDialog(null, "Prestamo modificado con éxito");
+                }
+
+                JOptionPane.showMessageDialog(null, "Devolución Exitosa");
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay evolución pendiente con este nombre y libro. Por favor verifique los datos");
+            }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error" + ex);
@@ -242,84 +216,78 @@ public class PrestamoData {
     }
 
 // lectoresMorosos (fecha actual menos fecha de fin)
-    public ArrayList<Lector> lectoresMorosos(){
+    public ArrayList<Lector> lectoresMorosos() {
         ArrayList<Lector> lectoresMorosos = new ArrayList<>();
-        String sql = "SELECT nombreCompleto\n" +
-"FROM prestamo\n" +
-"JOIN lector ON prestamo.idLector = lector.idLector\n" +
-"WHERE prestamo.estado = 1 AND prestamo.FechaFin < CURRENT_DATE();";
-         try {
-             ps = con.prepareStatement(sql);
-             ResultSet rs= ps.executeQuery();
-             while(rs.next()){
-                 Lector lector = new Lector();
-                 lector.setNombreCompleto(rs.getString("nombreCompleto"));
-                 lectoresMorosos.add(lector);
-             }
-             JOptionPane.showMessageDialog(null, "lectores morosos " + lectoresMorosos);
-         } catch (SQLException ex) {
-             Logger.getLogger(PrestamoData.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         
-        
+        String sql = "SELECT nombreCompleto\n"
+                + "FROM prestamo\n"
+                + "JOIN lector ON prestamo.idLector = lector.idLector\n"
+                + "WHERE prestamo.estado = 1 AND prestamo.FechaFin < CURRENT_DATE();";
+        try {
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Lector lector = new Lector();
+                lector.setNombreCompleto(rs.getString("nombreCompleto"));
+                lectoresMorosos.add(lector);
+            }
+            JOptionPane.showMessageDialog(null, "lectores morosos " + lectoresMorosos);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrestamoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return lectoresMorosos;
-        
-        
-        //////////////////////////////// hacer 2 actualizaciones pasar el lector a estado 1, pasar el ejemplar como retraso
-        
     }
 
 //libroprestadoXFechaEnunaFechaDeterminada
-        
-      public ArrayList<Prestamo> librosxFecha(LocalDate fecha){
+    public ArrayList<Prestamo> librosxFecha(LocalDate fecha) {
         ArrayList<Prestamo> librosxFecha = new ArrayList<>();
-        String sql = "SELECT prestamo.FechaInicio, libro.titulo FROM prestamo \n" +
-"JOIN ejemplar ON prestamo.idEjemplar = ejemplar.idEjemplar\n" +
-"JOIN libro ON ejemplar.idLibro = libro.idLibro\n" +
-"WHERE prestamo.FechaInicio=?";
-         try {
-             ps = con.prepareStatement(sql);
-             ps.setDate(1,java.sql.Date.valueOf(fecha.toString()));
-             ResultSet rs= ps.executeQuery();
-             
-             while(rs.next()){
-                 Libro libroxFecha = new Libro(rs.getString("titulo"));
-                 Ejemplar ejemplar = new Ejemplar(libroxFecha);
-                 Prestamo prestamo = new Prestamo(rs.getDate("FechaInicio").toLocalDate(),ejemplar);
-                 librosxFecha.add(prestamo);
-             }
-             JOptionPane.showMessageDialog(null, "libros x Fecha " + librosxFecha);
-         } catch (SQLException ex) {
-             Logger.getLogger(PrestamoData.class.getName()).log(Level.SEVERE, null, ex);
-         }
+        String sql = "SELECT prestamo.FechaInicio, libro.titulo FROM prestamo \n"
+                + "JOIN ejemplar ON prestamo.idEjemplar = ejemplar.idEjemplar\n"
+                + "JOIN libro ON ejemplar.idLibro = libro.idLibro\n"
+                + "WHERE prestamo.FechaInicio=?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setDate(1, java.sql.Date.valueOf(fecha.toString()));
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Libro libroxFecha = new Libro(rs.getString("titulo"));
+                Ejemplar ejemplar = new Ejemplar(libroxFecha);
+                Prestamo prestamo = new Prestamo(rs.getDate("FechaInicio").toLocalDate(), ejemplar);
+                librosxFecha.add(prestamo);
+            }
+            JOptionPane.showMessageDialog(null, "libros x Fecha " + librosxFecha);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrestamoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return librosxFecha;
     }
 
 // listar lectores que pidieron prestamos y los los libros que fueron prestados
- public ArrayList<Prestamo> lectoresXPrestamoDeLibros(){
+
+    public ArrayList<Prestamo> lectoresXPrestamoDeLibros(){
         ArrayList<Prestamo> lectoresXPrestamoDeLibros = new ArrayList<>();
-        String sql = "SELECT lector.nombreCompleto, libro.titulo  FROM prestamo \n" +
-"JOIN lector ON prestamo.idLector = lector.idLector\n" +
-"JOIN ejemplar ON prestamo.idEjemplar = ejemplar.idEjemplar\n" +
-"JOIN libro ON ejemplar.idLibro = libro.idLibro\n" +
-"WHERE prestamo.estado=1";
-         try {
-             ps = con.prepareStatement(sql);
-             ResultSet rs= ps.executeQuery();
-             while(rs.next()){
-                 Lector lector = new Lector(rs.getString("nombreCompleto"));
-                 Libro libro = new Libro(rs.getString("titulo"));
-                 Ejemplar ejemplar = new Ejemplar(libro);
-                 Prestamo prestamo = new Prestamo(ejemplar,lector);
-                 lectoresXPrestamoDeLibros.add(prestamo);
-             }
-            
-             JOptionPane.showMessageDialog(null, "lectores " + lectoresXPrestamoDeLibros);
-         } catch (SQLException ex) {
-             Logger.getLogger(PrestamoData.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         
-        
+        String sql = "SELECT lector.nombreCompleto, libro.titulo  FROM prestamo \n"
+                + "JOIN lector ON prestamo.idLector = lector.idLector\n"
+                + "JOIN ejemplar ON prestamo.idEjemplar = ejemplar.idEjemplar\n"
+                + "JOIN libro ON ejemplar.idLibro = libro.idLibro\n"
+                + "WHERE prestamo.estado=1";
+        try {
+            ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Lector lector = new Lector(rs.getString("nombreCompleto"));
+                Libro libro = new Libro(rs.getString("titulo"));
+                Ejemplar ejemplar = new Ejemplar(libro);
+                Prestamo prestamo = new Prestamo(ejemplar, lector);
+                lectoresXPrestamoDeLibros.add(prestamo);
+            }
+
+            JOptionPane.showMessageDialog(null, "lectores " + lectoresXPrestamoDeLibros);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrestamoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return lectoresXPrestamoDeLibros;
     }
 }
