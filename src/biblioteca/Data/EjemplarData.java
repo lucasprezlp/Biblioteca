@@ -1,4 +1,3 @@
-
 package biblioteca.Data;
 
 import biblioteca.Entidades.Ejemplar;
@@ -13,14 +12,15 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class EjemplarData {
-     private Connection con=null;
-    
-    public EjemplarData(){
-        con=conexion.getConexion();
+
+    private Connection con = null;
+
+    public EjemplarData() {
+        con = conexion.getConexion();
     }
- PreparedStatement ps;
- 
-     public int stock(int idLibro) {
+    PreparedStatement ps;
+
+    public int stock(int idLibro) {
         ///agregar el autor y nombre de la obra 
         int num = 0;
         String sql = "SELECT COUNT(*) FROM ejemplar WHERE estado = 'DISPONIBLE' AND idLibro = ?"; // mostrar solo los libros que figuren DISPONIBLES
@@ -41,7 +41,7 @@ public class EjemplarData {
     }
 
     public void guardarEjemplar(Ejemplar ejemplar, int cantidad) {
- //////////// terminar: setear el numero de ejemplares si el libro ya existe en la bd
+        //////////// terminar: setear el numero de ejemplares si el libro ya existe en la bd
         while (cantidad > 0) {
             String sql = "INSERT INTO ejemplar (codigo,idLibro,estado)"
                     + " VALUES (?,?,?)";
@@ -70,7 +70,7 @@ public class EjemplarData {
 //            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 //            ps.setString(1, ejemplar.getEstado().toString());/////////////////////// consulta tenemos problemas en el estado en la bd 
 //            ps.setInt(2, ejemplar.getIdEjemplar());
-            String sql = "UPDATE ejemplar SET estado=?"
+        String sql = "UPDATE ejemplar SET estado=?"
                 + "WHERE codigo = ?";
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -101,19 +101,19 @@ public class EjemplarData {
             JOptionPane.showMessageDialog(null, "Ocurrio un error: " + ex);
         }
     }
-    
-    public ArrayList<Ejemplar> listarLibrosXautor(String autor){
-      String sql = "SELECT idEjemplar, codigo, idLibro FROM ejemplar WHERE estado= DISPONIBLE";
-       ArrayList<Ejemplar> ejem = new ArrayList<>(); 
+
+    public ArrayList<Ejemplar> listarLibrosXautor(String autor) {
+        String sql = "SELECT idEjemplar, codigo, idLibro FROM ejemplar WHERE estado= DISPONIBLE";
+        ArrayList<Ejemplar> ejem = new ArrayList<>();
         try {
             ps = con.prepareStatement(sql);
-           // ps.setString(1, estado);
+            // ps.setString(1, estado);
             ResultSet rs = ps.executeQuery();
-                    while (rs.next()) {
-                        Ejemplar ejemplar= new Ejemplar();
+            while (rs.next()) {
+                Ejemplar ejemplar = new Ejemplar();
                 ejemplar.setIdEjemplar(rs.getInt("idEjemplar"));
                 ejemplar.setCodigo(rs.getInt("codigo"));
-                Libro lib= new Libro(rs.getInt("idLibro"));
+                Libro lib = new Libro(rs.getInt("idLibro"));
                 ejemplar.setLibro(lib);
                 //ejemplar.setEstados(rs.get);
                 ejem.add(ejemplar);
@@ -124,10 +124,48 @@ public class EjemplarData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al obtener el libro" + ex);
         }
-        
-     return ejem;   
+
+        return ejem;
     }
 
-     }
-     
+  public ArrayList<Ejemplar> listarEjemplarXId(String titulo) {
+    String sql = "SELECT ejemplar.codigo, libro.numEjemplares, ejemplar.estado "
+               + "FROM ejemplar "
+               + "JOIN libro ON (ejemplar.idLibro = libro.idLibro) "
+               + "WHERE libro.titulo = ?;";
+    
+    ArrayList<Ejemplar> ejem = new ArrayList<>();
+    ResultSet rs = null;
+    
+    try {
+        ps = con.prepareStatement(sql);
+        ps.setString(1, titulo);
+        rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            Ejemplar ejemplar = new Ejemplar();
+            Libro libro = new Libro(titulo, rs.getInt("numEjemplares"));
+            ejemplar.setLibro(libro);
+            ejemplar.setCodigo(rs.getInt("codigo"));
+            ejemplar.setEstado(EstadosEjemplar.valueOf(rs.getString("estado")));
+            ejem.add(ejemplar);
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    } finally {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+      System.out.println(ejem);
+    return ejem;
+}
 
+}

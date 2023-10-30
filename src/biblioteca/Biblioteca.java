@@ -50,19 +50,19 @@ public class Biblioteca {
         
  //       Libro lib1 = new Libro(10,9,"El principito","Juancito Botaro",1974,"Novela","Ediciones ULP",REPARACION,2);
 //           Libro lib1 = new Libro(2, 1, "1974", "George Orwell", 1974, "Novela", "Ediciones ULP", DISPONIBLE, 2); //bd Veronica
-        LibroData lbd = new LibroData();  
+//        LibroData lbd = new LibroData();  
 //        Libro lib = new Libro (9,PRESTADO);
        // lbd.guardarLibro(lib2);
 //        lbd.modificarLibro(lib);   
         //lbd.eliminarLibro(1);
         
-        for(Libro lib1: lbd.listarLibrosXautor("Gabriel García Márquez")){
-            System.out.println("ISBN : " + lib1.getIsbn());
-            System.out.println("titulo : "+ lib1.getTitulo());
-            System.out.println("Editor : "+lib1.getEditor());
-            System.out.println("numEjemplares : "+ lib1.getNumEjemplares());
-        }
-        
+//        for(Libro lib1: lbd.listarLibrosXautor("Gabriel García Márquez")){
+//            System.out.println("ISBN : " + lib1.getIsbn());
+//            System.out.println("titulo : "+ lib1.getTitulo());
+//            System.out.println("Editor : "+lib1.getEditor());
+//            System.out.println("numEjemplares : "+ lib1.getNumEjemplares());
+//        }
+//        
         
        
        ///PRUEBAS DE LA CLASE EJEMPLARDATA
@@ -72,14 +72,14 @@ public class Biblioteca {
        // Ejemplar ej = new Ejemplar();
         //Ejemplar ej = new Ejemplar(1, 20, lib1, EstadosEjemplar.DISPONIBLE); // se usa para prestar ejemplares, está en las base de Veronica
 //        Ejemplar ej = new Ejemplar(2, 21, lib1, EstadosEjemplar.DISPONIBLE); // se usa para prestar ejemplares, está en las base de Veronica
-//        EjemplarData ejeD = new EjemplarData();
+        EjemplarData ejeD = new EjemplarData();
 //        ejeD.modificarEjemplar(20,EstadosEjemplar.DISPONIBLE);
 //          ejeD.guardarEjemplar(ej, 2);
 //        Ejemplar ej = new Ejemplar(0, lib, EstadosEjemplar.DISPONIBLE);
 //        EjemplarData eje = new EjemplarData();
 //        ejeD.stock(10);
 //        ejeD.eliminarEjemplar(1);
-
+ejeD.listarEjemplarXId("Cien años de soledad");
 
         ///PRUEBAS DE LA CLASE PRESTAMODATA   ///(Veronica: usar lo de date de abajo es para cuando queres convertir de date a localdate
         
