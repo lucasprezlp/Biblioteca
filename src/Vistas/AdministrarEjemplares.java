@@ -1,14 +1,22 @@
-
 package Vistas;
 
 import biblioteca.Data.EjemplarData;
 import biblioteca.Entidades.EstadosEjemplar;
 
 public class AdministrarEjemplares extends javax.swing.JInternalFrame {
+
     private EjemplarData ejeData = new EjemplarData();
-    
+
     public AdministrarEjemplares() {
-        initComponents();
+        initComponents();  
+          EstadosEjemplar[] estados = EstadosEjemplar.values();
+        for (EstadosEjemplar estado : estados) {
+            jCBEstado.addItem(estado.toString());
+//        jCBEstado = new javax.swing.JComboBox<>(); // Crea una instancia de JComboBox
+//        EstadosEjemplar[] estados = EstadosEjemplar.values();
+//        for (EstadosEjemplar estado : estados) {
+//            jCBEstado.addItem(estado.toString());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -45,12 +53,22 @@ public class AdministrarEjemplares extends javax.swing.JInternalFrame {
 
         jButton2.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton2.setText("LIMPIAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton3.setText("MODIFICAR");
 
         jButton4.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton4.setText("SALIR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jCBEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,24 +84,17 @@ public class AdministrarEjemplares extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton4)
-                                    .addComponent(jButton2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                                .addComponent(jButton3)
-                                .addContainerGap())
+                                .addGap(45, 45, 45)
+                                .addComponent(jButton2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(88, 88, 88))))
+                                .addComponent(jButton4)
+                                .addGap(8, 8, 8)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,6 +103,13 @@ public class AdministrarEjemplares extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addGap(25, 25, 25))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,9 +132,9 @@ public class AdministrarEjemplares extends javax.swing.JInternalFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addContainerGap())
+                .addGap(13, 13, 13))
         );
 
         pack();
@@ -124,13 +142,27 @@ public class AdministrarEjemplares extends javax.swing.JInternalFrame {
 
     private void jCBEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEstadoActionPerformed
 
-        jCBEstado.removeAllItems();
-        EstadosEjemplar[] estados = EstadosEjemplar.values();
-        for (EstadosEjemplar estado : estados) {
-            jCBEstado.addItem(estado.toString());
-
-        } 
+//            EstadosEjemplar estadoSeleccionado = (EstadosEjemplar) jCBEstado.getSelectedItem();
+//        jCBEstado.JComboboxEnum();
+//        EstadosEjemplar[] estados = EstadosEjemplar.values();
+//        for (EstadosEjemplar estado : estados) {
+//            jCBEstado.addItem(estado());
+//            jCBEstado.addItem(estado.DISPONIBLE.toString());
+//            jCBEstado.addItem(estado.NO_DISPONIBLE.toString());
+//            jCBEstado.addItem(estado.PRESTADO.toString());
+//            jCBEstado.addItem(estado.REPARACION.toString());
+//            jCBEstado.addItem(estado.RETRASO.toString());
+//        }
     }//GEN-LAST:event_jCBEstadoActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -146,5 +178,5 @@ public class AdministrarEjemplares extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
-
+ 
 }

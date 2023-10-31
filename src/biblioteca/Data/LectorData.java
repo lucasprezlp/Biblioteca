@@ -201,16 +201,16 @@ public class LectorData {
             Date fechaActualSQL = Date.valueOf(fechaActual);
             List<String> librosAdeudados = new ArrayList<>();
 
-            String sql = "SELECT l.titulo, p.FechaFin, ejemplar.codigo "
+            String sql = "SELECT l.titulo, p.FechaFin, e.codigo "
                     + "FROM prestamo p "
                     + "INNER JOIN ejemplar e ON p.idEjemplar = e.idEjemplar "
                     + "INNER JOIN libro l ON e.idLibro = l.idLibro "
-                    + "WHERE p.idLector = ? AND p.FechaFin < ?";
+                    + "WHERE p.idLector = ? AND p.FechaFin <= CURRENT_DATE()";
 
             try {
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setInt(1, idLector);
-                ps.setDate(2, fechaActualSQL);
+//                ps.setDate(2, fechaActualSQL);
                 ResultSet rs = ps.executeQuery();
 
                 while (rs.next()) {
