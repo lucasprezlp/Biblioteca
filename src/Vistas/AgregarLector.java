@@ -37,69 +37,82 @@ public class AgregarLector extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        jTFNombreCompleto = new javax.swing.JTextField();
+        jTFDNI = new javax.swing.JTextField();
+        jTFDomicilio = new javax.swing.JTextField();
+        jTFemail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jTFTelefono = new javax.swing.JTextField();
+        jBGuardar = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
+        jRBEstado = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        jTFNroSocio = new javax.swing.JTextField();
+        jBModificar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
-        jLabel1.setText("Agregar Lector");
+        jLabel1.setFont(new java.awt.Font("Arial Black", 3, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel1.setText("AGREGAR LECTOR");
 
-        jLabel2.setText("Nombre Compelto:");
+        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jLabel2.setText("Nombre Completo:");
 
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel3.setText("D.N.I");
 
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel4.setText("Domicilio:");
 
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel5.setText("email:");
 
+        jLabel6.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel6.setText("Estado:");
 
+        jLabel7.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel7.setText("Telefono:");
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBGuardar.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jBGuardar.setText("GUARDAR");
+        jBGuardar.setActionCommand("GUARDAR");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBGuardarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Salir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBSalir.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jBSalir.setText("SALIR");
+        jBSalir.setActionCommand("SALIR");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBSalirActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Limpiar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBLimpiar.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jBLimpiar.setText("LIMPIAR");
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBLimpiarActionPerformed(evt);
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel8.setText("Nro Socio:");
 
-        jTextField5.setText("inserte numero");
-
-        jButton4.setText("Modificar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jBModificar.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jBModificar.setText("MODIFICAR");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jBModificarActionPerformed(evt);
             }
         });
 
@@ -108,102 +121,106 @@ public class AgregarLector extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTFDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFNombreCompleto)
+                    .addComponent(jTFDomicilio)
+                    .addComponent(jTFemail, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(45, 45, 45)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(45, 45, 45)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jRadioButton1)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                                    .addComponent(jTextField5)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
-                                .addGap(38, 38, 38)
-                                .addComponent(jButton4))))
+                        .addContainerGap()
+                        .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBSalir))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(82, 82, 82))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRBEstado)
+                            .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFNroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
                         .addComponent(jLabel1)))
-                .addContainerGap(132, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(39, 39, 39))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel3)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel4)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTFNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jTFDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jTFDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jTFemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jRadioButton1))
+                    .addComponent(jRBEstado))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                    .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(jTFNroSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jBGuardar)
+                    .addComponent(jBSalir)
+                    .addComponent(jBLimpiar)
+                    .addComponent(jBModificar))
                 .addGap(38, 38, 38))
         );
+
+        jLabel1.getAccessibleContext().setAccessibleName("AGREGAR LECTOR");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
    try{
         // Obteniendo los valores de los campos de texto
-    int nrosocio = Integer.parseInt(jTextField5.getText());
-    String nom = jTextField1.getText(); // Nombre
-    int dni = Integer.parseInt(jTextField2.getText()); // DNI
-    String dir = jTextField3.getText(); // Dirección
-    String mail = jTextField4.getText(); // Correo
-    boolean estado = jRadioButton1.isSelected(); // Estado (asumiendo un botón de opción)
-    int tel = Integer.parseInt(jTextField6.getText()); // Teléfono
+    int nrosocio = Integer.parseInt(jTFNroSocio.getText());
+    String nom = jTFNombreCompleto.getText(); // Nombre
+    int dni = Integer.parseInt(jTFDNI.getText()); // DNI
+    String dir = jTFDomicilio.getText(); // Dirección
+    String mail = jTFemail.getText(); // Correo
+    boolean estado = jRBEstado.isSelected(); // Estado (asumiendo un botón de opción)
+    int tel = Integer.parseInt(jTFTelefono.getText()); // Teléfono
 
     // Crear un objeto Lector con los valores obtenidos
     Lector lec = new Lector(nrosocio, nom, mail, mail, dni, tel, estado);
@@ -215,30 +232,30 @@ public class AgregarLector extends javax.swing.JInternalFrame {
                    JOptionPane.showMessageDialog(null, "Ingrese datos correctos");
 
    }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         // TODO add your handling code here:
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jRadioButton1.setSelected(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        jTFNombreCompleto.setText("");
+        jTFDNI.setText("");
+        jTFDomicilio.setText("");
+        jTFemail.setText("");
+        jTFNroSocio.setText("");
+        jTFTelefono.setText("");
+        jRBEstado.setSelected(false);
+    }//GEN-LAST:event_jBLimpiarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
         // TODO add your handling code here:
         try{
-         int nrosocio = Integer.parseInt(jTextField5.getText());
-    String nom = jTextField1.getText(); // Nombre
+         int nrosocio = Integer.parseInt(jTFNroSocio.getText());
+    String nom = jTFNombreCompleto.getText(); // Nombre
                 int id = l.obtenerIdLectorPorNombre(nom);
-    int dni = Integer.parseInt(jTextField2.getText()); // DNI
-    String dir = jTextField3.getText(); // Dirección
-    String mail = jTextField4.getText(); // Correo
-    boolean estado = jRadioButton1.isSelected(); // Estado (asumiendo un botón de opción)
-    int tel = Integer.parseInt(jTextField6.getText()); // Teléfono
+    int dni = Integer.parseInt(jTFDNI.getText()); // DNI
+    String dir = jTFDomicilio.getText(); // Dirección
+    String mail = jTFemail.getText(); // Correo
+    boolean estado = jRBEstado.isSelected(); // Estado (asumiendo un botón de opción)
+    int tel = Integer.parseInt(jTFTelefono.getText()); // Teléfono
 
     // Crear un objeto Lector con los valores obtenidos
     Lector lec = new Lector(id, nrosocio, nom, mail, mail, dni, tel, estado);
@@ -248,18 +265,18 @@ public class AgregarLector extends javax.swing.JInternalFrame {
         }catch(NumberFormatException ex){
             
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jBModificarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBGuardar;
+    private javax.swing.JButton jBLimpiar;
+    private javax.swing.JButton jBModificar;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -268,12 +285,12 @@ public class AgregarLector extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JRadioButton jRBEstado;
+    private javax.swing.JTextField jTFDNI;
+    private javax.swing.JTextField jTFDomicilio;
+    private javax.swing.JTextField jTFNombreCompleto;
+    private javax.swing.JTextField jTFNroSocio;
+    private javax.swing.JTextField jTFTelefono;
+    private javax.swing.JTextField jTFemail;
     // End of variables declaration//GEN-END:variables
 }

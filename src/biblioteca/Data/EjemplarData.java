@@ -49,7 +49,7 @@ public class EjemplarData {
                 ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                 ps.setInt(1, ejemplar.getCodigo());
                 ps.setInt(2, ejemplar.getLibro().getIdLibro());
-                ps.setString(3, ejemplar.getEstado().toString()); /////////////////////// consulta tenemos problemas en el estado en la bd 
+                ps.setString(3, ejemplar.getEstado().toString()); 
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
                 if (rs.next()) {
@@ -63,18 +63,13 @@ public class EjemplarData {
         }
     }
 
-    public void modificarEjemplar(int codigo, EstadosEjemplar eje) {  /// podemos usarlo como metodo de ELIMINAR modificando el estado
-//        String sql = "UPDATE ejemplar SET estado=?"
-//                + "WHERE idEjemplar = ?";
-//        try {
-//            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-//            ps.setString(1, ejemplar.getEstado().toString());/////////////////////// consulta tenemos problemas en el estado en la bd 
-//            ps.setInt(2, ejemplar.getIdEjemplar());
+    public void modificarEjemplar(int codigo, EstadosEjemplar eje) { 
+        
         String sql = "UPDATE ejemplar SET estado=?"
                 + "WHERE codigo = ?";
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, eje.toString());/////////////////////// consulta tenemos problemas en el estado en la bd 
+            ps.setString(1, eje.toString()); 
             ps.setInt(2, codigo);
             int exito = ps.executeUpdate();
             if (exito == 1) {

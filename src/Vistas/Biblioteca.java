@@ -33,6 +33,7 @@ public class Biblioteca extends javax.swing.JFrame {
         jMIListarLibroXAutor = new javax.swing.JMenuItem();
         EJEMPLAR = new javax.swing.JMenu();
         jMIMostrarEjemplar = new javax.swing.JMenuItem();
+        jMIAdminEjemplar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         ActivarDesactivar = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -60,11 +61,6 @@ public class Biblioteca extends javax.swing.JFrame {
                 jMenu5MouseClicked(evt);
             }
         });
-        jMenu5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu5ActionPerformed(evt);
-            }
-        });
 
         jMIAdministrarLibro.setText("Administrar Libros");
         jMIAdministrarLibro.addActionListener(new java.awt.event.ActionListener() {
@@ -75,11 +71,6 @@ public class Biblioteca extends javax.swing.JFrame {
         jMenu5.add(jMIAdministrarLibro);
 
         jMIListarLibroXAutor.setText("Listar libro por autor");
-        jMIListarLibroXAutor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMIListarLibroXAutorMouseClicked(evt);
-            }
-        });
         jMIListarLibroXAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIListarLibroXAutorActionPerformed(evt);
@@ -90,11 +81,6 @@ public class Biblioteca extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
 
         EJEMPLAR.setText("EJEMPLAR");
-        EJEMPLAR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EJEMPLARActionPerformed(evt);
-            }
-        });
 
         jMIMostrarEjemplar.setText("Mostrar ejemplares");
         jMIMostrarEjemplar.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +89,14 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
         EJEMPLAR.add(jMIMostrarEjemplar);
+
+        jMIAdminEjemplar.setText("Administrar ejemplares");
+        jMIAdminEjemplar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAdminEjemplarActionPerformed(evt);
+            }
+        });
+        EJEMPLAR.add(jMIAdminEjemplar);
 
         jMenuBar1.add(EJEMPLAR);
 
@@ -199,10 +193,6 @@ public class Biblioteca extends javax.swing.JFrame {
         escritorio.moveToFront(dde);
     }//GEN-LAST:event_AdminPrestamoActionPerformed
 
-    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
-     
-    }//GEN-LAST:event_jMenu5ActionPerformed
-
     private void jMIAdministrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAdministrarLibroActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
@@ -232,12 +222,6 @@ public class Biblioteca extends javax.swing.JFrame {
         escritorio.moveToFront(listaxAutor);
        
     }//GEN-LAST:event_jMIListarLibroXAutorActionPerformed
-
-    private void EJEMPLARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EJEMPLARActionPerformed
-        // TODO add your handling code here:
-        
-   
-    }//GEN-LAST:event_EJEMPLARActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         escritorio.removeAll();
@@ -295,10 +279,16 @@ private void cerrarAplicacion() {
         escritorio.moveToFront(libDisponible); 
     }//GEN-LAST:event_jMIMostrarEjemplarActionPerformed
 
-    private void jMIListarLibroXAutorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMIListarLibroXAutorMouseClicked
+    private void jMIAdminEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAdminEjemplarActionPerformed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jMIListarLibroXAutorMouseClicked
+        escritorio.removeAll();
+        escritorio.repaint();
+        AdministrarEjemplares ejemDisponible = new AdministrarEjemplares();
+        ejemDisponible.setVisible(true);
+        ejemDisponible.getContentPane().setBackground(new Color(204, 204, 255));
+        escritorio.add(ejemDisponible);
+        escritorio.moveToFront(ejemDisponible); 
+    }//GEN-LAST:event_jMIAdminEjemplarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -337,6 +327,7 @@ private void cerrarAplicacion() {
     private javax.swing.JMenuItem AdminPrestamo;
     private javax.swing.JMenu EJEMPLAR;
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem jMIAdminEjemplar;
     private javax.swing.JMenuItem jMIAdministrarLibro;
     private javax.swing.JMenuItem jMIListarLibroXAutor;
     private javax.swing.JMenuItem jMIMostrarEjemplar;

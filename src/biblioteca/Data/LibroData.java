@@ -40,7 +40,6 @@ public class LibroData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 libro.setIdLibro(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "libro agregado con exito");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese un id correcto/diferente");

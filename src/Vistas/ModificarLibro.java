@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class ModificarLibro extends javax.swing.JInternalFrame {
     private LibroData libData = new LibroData();
-    private Libro libroActual;
+    private Libro libroActual=null;
 
     public ModificarLibro() {
         initComponents();
@@ -60,12 +60,6 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel5.setText("Año");
 
-        jTFAnio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFAnioActionPerformed(evt);
-            }
-        });
-
         jLabel6.setFont(new java.awt.Font("Arial Black", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(153, 51, 255));
         jLabel6.setText("AGREGAR/MODIFICAR LIBROS");
@@ -75,12 +69,6 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
 
         jLabel9.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel9.setText("Titulo del libro");
-
-        jtNombreDelLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtNombreDelLibroActionPerformed(evt);
-            }
-        });
 
         jBGuardar.setFont(new java.awt.Font("Arial Black", 2, 12)); // NOI18N
         jBGuardar.setText("Guardar");
@@ -111,12 +99,6 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
 
         jLabel11.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel11.setText("Editor");
-
-        jTFEditor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFEditorActionPerformed(evt);
-            }
-        });
 
         jBLimpiar.setFont(new java.awt.Font("Arial Black", 2, 12)); // NOI18N
         jBLimpiar.setText("Limpiar");
@@ -240,18 +222,6 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTFEditorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFEditorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFEditorActionPerformed
-
-    private void jtNombreDelLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreDelLibroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtNombreDelLibroActionPerformed
-
-    private void jTFAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFAnioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFAnioActionPerformed
-
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
  
         try {
@@ -295,15 +265,16 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
             Integer anio = Integer.parseInt(jTFAnio.getText());
             String editor = jTFEditor.getText();
             String genero = jTFTipo.getText();
-            Boolean estado = jRBEstado.isSelected();
             Integer numEje = Integer.parseInt(jTFnumEjemplares.getText());
-
+            Boolean estado = jRBEstado.isSelected();
+            
             if (libroActual == null) {
-                Libro libro = new Libro(isbn, titulo, autor, anio, genero, editor, estado, numEje);
-                libData.guardarLibro(libro);
+                libroActual = new Libro(isbn, titulo, autor, anio, genero, editor, estado, numEje);
+                libData.guardarLibro(libroActual);
                 JOptionPane.showMessageDialog(null, "Libro guardado con éxito");
-
-            } else {
+            } 
+            else {
+                               
                 JOptionPane.showMessageDialog(null, "Libro ya ingresado");
             }
         } catch (NumberFormatException ex) {
