@@ -106,9 +106,9 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRBEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jRBEstado" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -143,9 +143,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="AGREGAR LECTOR"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="AGREGAR LECTOR"/>
-      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -211,7 +208,6 @@
           <Font name="Arial Black" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="GUARDAR"/>
-        <Property name="actionCommand" type="java.lang.String" value="GUARDAR"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBGuardarActionPerformed"/>
@@ -223,7 +219,6 @@
           <Font name="Arial Black" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="SALIR"/>
-        <Property name="actionCommand" type="java.lang.String" value="SALIR"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBSalirActionPerformed"/>

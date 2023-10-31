@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class AgregarLector extends javax.swing.JInternalFrame {
     LectorData l = new LectorData();
-    
+    Lector lec =new Lector();
     /**
      * Creates new form AgregarLector
      */
@@ -81,7 +81,6 @@ public class AgregarLector extends javax.swing.JInternalFrame {
 
         jBGuardar.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jBGuardar.setText("GUARDAR");
-        jBGuardar.setActionCommand("GUARDAR");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
@@ -90,7 +89,6 @@ public class AgregarLector extends javax.swing.JInternalFrame {
 
         jBSalir.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jBSalir.setText("SALIR");
-        jBSalir.setActionCommand("SALIR");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalirActionPerformed(evt);
@@ -186,7 +184,7 @@ public class AgregarLector extends javax.swing.JInternalFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jTFemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jRBEstado))
                 .addGap(28, 28, 28)
@@ -206,8 +204,6 @@ public class AgregarLector extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38))
         );
 
-        jLabel1.getAccessibleContext().setAccessibleName("AGREGAR LECTOR");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -221,12 +217,19 @@ public class AgregarLector extends javax.swing.JInternalFrame {
     String mail = jTFemail.getText(); // Correo
     boolean estado = jRBEstado.isSelected(); // Estado (asumiendo un botón de opción)
     int tel = Integer.parseInt(jTFTelefono.getText()); // Teléfono
-
+    
     // Crear un objeto Lector con los valores obtenidos
-    Lector lec = new Lector(nrosocio, nom, mail, mail, dni, tel, estado);
+    
+       if (lec == null) {
+           Lector lec = new Lector(nrosocio, nom, dir, mail, dni, tel, estado);
+           l.guardarLector(lec);
+           JOptionPane.showMessageDialog(null, "Lector ingresado con exito");
+       } else {
 
+           JOptionPane.showMessageDialog(null, "Lector ya ingresado");
+       }
     // Llamar al método para guardar el Lector
-    l.guardarLector(lec);
+    
    }
    catch(NumberFormatException exx){
                    JOptionPane.showMessageDialog(null, "Ingrese datos correctos");
@@ -251,6 +254,7 @@ public class AgregarLector extends javax.swing.JInternalFrame {
          int nrosocio = Integer.parseInt(jTFNroSocio.getText());
     String nom = jTFNombreCompleto.getText(); // Nombre
                 int id = l.obtenerIdLectorPorNombre(nom);
+                
     int dni = Integer.parseInt(jTFDNI.getText()); // DNI
     String dir = jTFDomicilio.getText(); // Dirección
     String mail = jTFemail.getText(); // Correo
@@ -258,7 +262,7 @@ public class AgregarLector extends javax.swing.JInternalFrame {
     int tel = Integer.parseInt(jTFTelefono.getText()); // Teléfono
 
     // Crear un objeto Lector con los valores obtenidos
-    Lector lec = new Lector(id, nrosocio, nom, mail, mail, dni, tel, estado);
+    Lector lec = new Lector(id, nrosocio, nom, dir, mail, dni, tel, estado);
 
     // Llamar al método para guardar el Lector
     l.modificarLector(lec);

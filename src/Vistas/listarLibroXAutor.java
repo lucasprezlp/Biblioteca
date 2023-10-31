@@ -139,7 +139,7 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
                 ejem.getCodigo(),ejem.getLibro().getEditor(),ejem.getEstado()
             });
         }
-         JOptionPane.showMessageDialog(null, "Y??????");
+        
     }//GEN-LAST:event_jBBuscarActionPerformed
 
 
