@@ -6,12 +6,16 @@
 package Vistas;
 
 import biblioteca.Data.LectorData;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ConsultarLectorMoroso extends javax.swing.JInternalFrame {
 LectorData l = new LectorData();
+private DefaultTableModel modelo = new DefaultTableModel();
 
     public ConsultarLectorMoroso() {
         initComponents();
+        armarcabecera();
     }
 
     @SuppressWarnings("unchecked")
@@ -62,6 +66,11 @@ LectorData l = new LectorData();
 
         jBBuscar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jBBuscar.setText("BUSCAR");
+        jBBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBBuscarMouseClicked(evt);
+            }
+        });
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
@@ -114,12 +123,21 @@ LectorData l = new LectorData();
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
    
-        l.Moroso(jBBuscar.toString());
+       if (jTextField1.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar un lector");
+    } else{
+              l.Moroso(jBBuscar.toString());
+       }
+
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBBuscarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -131,4 +149,13 @@ LectorData l = new LectorData();
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+private void armarcabecera(){
+    modelo.addColumn("Titulo");
+     modelo.addColumn("Fecha de dev.");
+      modelo.addColumn("Código");
+      jTable1.setModel(modelo);
+}
+
+
 }

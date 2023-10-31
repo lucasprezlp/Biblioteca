@@ -6,6 +6,7 @@
 package Vistas;
 
 import biblioteca.Data.LectorData;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +20,8 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
      */
     public ActivDesactivLector() {
         initComponents();
+        activar.setEnabled(false);
+        desactivar.setEnabled(false);
     }
 
     /**
@@ -33,8 +36,8 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTFNombreLector = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        activar = new javax.swing.JRadioButton();
+        desactivar = new javax.swing.JRadioButton();
         jBbuscar = new javax.swing.JButton();
         jLEstado = new javax.swing.JLabel();
         jBSalir = new javax.swing.JButton();
@@ -52,30 +55,42 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel2.setText("Escriba nombre del lector");
 
-        jRadioButton1.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
-        jRadioButton1.setText("Activar lector");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        jTFNombreLector.setText("Juan Perez");
+
+        activar.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
+        activar.setText("Activar lector");
+        activar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                activarActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
-        jRadioButton2.setText("Desactivar lector");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        desactivar.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
+        desactivar.setText("Desactivar lector");
+        desactivar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                desactivarActionPerformed(evt);
             }
         });
 
         jBbuscar.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
         jBbuscar.setText("BUSCAR");
+        jBbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarActionPerformed(evt);
+            }
+        });
 
         jLEstado.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLEstado.setText("Estado del lector");
 
         jBSalir.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
         jBSalir.setText("SALIR");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,17 +103,18 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFNombreLector, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(activar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLEstado)))
+                        .addComponent(desactivar)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLEstado)
+                            .addComponent(jTFNombreLector, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jBbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,11 +131,12 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
                     .addComponent(jTFNombreLector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBbuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLEstado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jLEstado)
+                    .addComponent(activar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(desactivar)
                     .addComponent(jBSalir))
                 .addGap(21, 21, 21))
         );
@@ -128,38 +145,88 @@ public class ActivDesactivLector extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void desactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desactivarActionPerformed
         // TODO add your handling code here:
                 String st = jTFNombreLector.getText();
         lec.desactivarLector(lec.obtenerIdLectorPorNombre(st));
-       if (jRadioButton2.isSelected()) {
-        jRadioButton1.setEnabled(false);
-    } else {
-        jRadioButton1.setEnabled(true);
-        
-    }
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+        activar.setEnabled(true);
+        activar.setSelected(false);
+        desactivar.setEnabled(false);
+        jLEstado.setText("INACTIVO");
+    
+    }//GEN-LAST:event_desactivarActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void activarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activarActionPerformed
          String st = jTFNombreLector.getText();
         lec.activarLector(lec.obtenerIdLectorPorNombre(st));
-       if (jRadioButton1.isSelected()) {
-        jRadioButton2.setEnabled(false);
-    } else {
-        jRadioButton2.setEnabled(true);
+        desactivar.setEnabled(true);
+        desactivar.setSelected(false);
+        activar.setEnabled(false);
+        jLEstado.setText("ACTIVO");
+
+    }//GEN-LAST:event_activarActionPerformed
+
+    private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
+        // TODO add your handling code here:
+       
+ 
+        if (jTFNombreLector.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Ingrese un lector");
+            return;
+        }
         
-            
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-    }
+        
+        
+        String st = jTFNombreLector.getText();
+        
+        int Idlector = lec.obtenerIdLectorPorNombre(st);
+        
+        if (Idlector==-1){
+            JOptionPane.showMessageDialog(this, "Ingrese un lector valido");
+            jTFNombreLector.setText("");
+            return;   
+        }
+        
+        boolean estado = lec.EstadoLector(Idlector);
+
+        
+        if (estado == true ){
+            activar.setEnabled(false);
+            desactivar.setEnabled(true);
+            jLEstado.setText("ACTIVO");
+        } else {
+            activar.setEnabled(true);
+            desactivar.setEnabled(false);
+            jLEstado.setText("INACTIVO");
+        }
+        
+        
+//        
+//        if (activar.isSelected()) {
+//            lec.activarLector(Idlector);
+//            jLEstado.setText("ACTIVO");
+//            
+//    
+//        } else {
+//            lec.desactivarLector(Idlector);
+//            jLEstado.setText("INACTIVO");
+//        }
+    }//GEN-LAST:event_jBbuscarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton activar;
+    private javax.swing.JRadioButton desactivar;
     private javax.swing.JButton jBSalir;
     private javax.swing.JButton jBbuscar;
     private javax.swing.JLabel jLEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTFNombreLector;
     // End of variables declaration//GEN-END:variables
 }

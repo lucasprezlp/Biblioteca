@@ -70,6 +70,16 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
 
         jButton3.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton3.setText("SALIR");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -97,7 +107,6 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
 
         jButton4.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton4.setText("EJECUTAR");
-        jButton4.setActionCommand("EJECUTAR");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -337,6 +346,15 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
     private void jtTituloLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtTituloLibroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtTituloLibroActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

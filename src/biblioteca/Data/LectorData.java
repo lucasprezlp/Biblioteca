@@ -161,6 +161,9 @@ public class LectorData {
 
             if (rs.next()) {
                 idLector = rs.getInt("idLector");
+            } else {
+                JOptionPane.showMessageDialog(null, "lector no encontrado");
+                
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al obtener el idLector por nombre en la base de datos: " + ex.getMessage());
@@ -169,13 +172,13 @@ public class LectorData {
         return idLector;
     }
 
-    public Boolean EstadoLector(String nombreCompleto) {
+    public Boolean EstadoLector(int idlector) {
     
-        String sql = "SELECT estado FROM lector WHERE nombreCompleto = ?";
+        String sql = "SELECT estado FROM lector WHERE idLector = ?";
         Boolean estado = null;
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, nombreCompleto);
+            ps.setInt(1,idlector );
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -198,7 +201,7 @@ public class LectorData {
             Date fechaActualSQL = Date.valueOf(fechaActual);
             List<String> librosAdeudados = new ArrayList<>();
 
-            String sql = "SELECT l.titulo, p.FechaFin "
+            String sql = "SELECT l.titulo, p.FechaFin, ejemplar.codigo "
                     + "FROM prestamo p "
                     + "INNER JOIN ejemplar e ON p.idEjemplar = e.idEjemplar "
                     + "INNER JOIN libro l ON e.idLibro = l.idLibro "
@@ -213,11 +216,12 @@ public class LectorData {
                 while (rs.next()) {
                     String tituloLibro = rs.getString("titulo");
                     Date fechaDevolucion = rs.getDate("FechaFin");
+                    int codigo = rs.getInt("codigo");
 
                     // Formatea la fecha de devolución como cadena legible
                     LocalDate fechaDevolucionLocal = fechaDevolucion.toLocalDate();
                     String fechaDevolucionFormateada = fechaDevolucionLocal.toString();
-
+                    
                     librosAdeudados.add("Libro: " + tituloLibro + ", Fecha de Devolución: " + fechaDevolucionFormateada);
                 }
 
