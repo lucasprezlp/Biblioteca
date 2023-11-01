@@ -42,26 +42,138 @@ public class EjemplarData {
 
     public void guardarEjemplar(Ejemplar ejemplar, int cantidad) {
         //////////// terminar: setear el numero de ejemplares si el libro ya existe en la bd
-        while (cantidad > 0) {
-            String sql = "INSERT INTO ejemplar (codigo,idLibro,estado)"
-                    + " VALUES (?,?,?)";
-            try {
-                ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-                ps.setInt(1, ejemplar.getCodigo());
-                ps.setInt(2, ejemplar.getLibro().getIdLibro());
-                ps.setString(3, ejemplar.getEstado().toString()); 
-                ps.executeUpdate();
-                ResultSet rs = ps.getGeneratedKeys();
-                if (rs.next()) {
-                    ejemplar.setIdEjemplar(rs.getInt(1));
-                    JOptionPane.showMessageDialog(null, "Ejemplar agregado con exito");
-                }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Ingrese un id correcto/diferente" + ex);
-            }
-            cantidad = cantidad - 1;
+
+    // 1. Verificar si el libro ya existe en la base de datos y obtener su código
+    int codigoLibro = obtenerCodigoLibro(ejemplar.getLibro().getIdLibro()); // Reemplaza obtenerCodigoLibro con tu lógica real
+
+    // 2. Bucle para insertar ejemplares
+    while (cantidad > 0) {
+        String sql = "INSERT INTO ejemplar (codigo, idLibro, estado) VALUES (?, ?, ?)";
+       
+        try {
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, obtenerNuevoCodigoEjemplar()); // Incrementar el código
+            ps.setInt(2, ejemplar.getLibro().getIdLibro());
+            ps.setString(3, ejemplar.getEstado().toString());
+
+            // ... Resto del código para ejecutar la consulta y manejar la base de datos
+
+            cantidad--;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
+}
+
+//private int obtenerNuevoCodigoEjemplar(int codigoLibro) {
+//    // Lógica para obtener un nuevo código de ejemplar, por ejemplo, buscar el máximo existente y sumar 1
+//    // Reemplaza esta lógica con la que necesites según tu base de datos
+//    int nuevoCodigo = 0; // Ejemplo: Puedes inicializarlo en 0
+//    // Consulta la base de datos para encontrar el máximo código existente para este libro
+//    // y luego suma 1 al máximo para obtener el nuevo código
+//
+//    return nuevoCodigo;
+//}            
+     public int obtenerNuevoCodigoEjemplar() {
+    int nuevoCodigo = 0;
+    String sql = "SELECT MAX(codigo) FROM ejemplar";
+
+    try {
+        PreparedStatement ps1 = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = ps1.executeQuery();
+
+        if (rs.next()) {
+            int maxCodigo = rs.getInt(1);
+            nuevoCodigo = maxCodigo + 1;
+        }
+    } catch (SQLException ex) {
+        // Manejar excepciones en caso de error en la consulta
+        ex.printStackTrace();
+    }
+
+    return nuevoCodigo;
+}
+
+
+
+
+
+
+               
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+//        while (cantidad > 0) {
+//            
+//            String sql = "INSERT INTO ejemplar (codigo,idLibro,estado)"
+//                    + " VALUES (?,?,?)";
+//            try {
+//                ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//               
+//                ps.setInt(1, ejemplar.getCodigo());
+//                ps.setInt(2, ejemplar.getLibro().getIdLibro());
+//                ps.setString(3, ejemplar.getEstado().toString()); 
+//                ps.executeUpdate();
+//                ResultSet rs = ps.getGeneratedKeys();
+//                if (rs.next()) {
+//                    ejemplar.setIdEjemplar(rs.getInt(1));
+//                    JOptionPane.showMessageDialog(null, "Ejemplar agregado con exito");
+//                }
+//            } catch (SQLException ex) {
+//                JOptionPane.showMessageDialog(null, "Ingrese un id correcto/diferente" + ex);
+//            }
+//            cantidad = cantidad - 1;
+//        }
+
+    private int obtenerCodigoLibro(int idLibro) {
+    int codigoLibro = 0; // Valor predeterminado si el libro no se encuentra en la base de datos
+
+    try {
+        String sql = "SELECT codigo FROM ejemplar WHERE idLibro = ?";
+        ps = con.prepareStatement(sql);
+        ps.setInt(1, idLibro);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            codigoLibro = rs.getInt("codigo");
+        }
+
+        // Cerrar el ResultSet y liberar recursos
+        rs.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return codigoLibro;
+}
+//    int codigoLibro = 0; // Valor predeterminado si el libro no se encuentra en la base de datos
+//
+//    try {
+//        String sql = "SELECT codigo FROM libro WHERE id = ?";
+//        ps = con.prepareStatement(sql);
+//        ps.setInt(1, idLibro);
+//        ResultSet rs = ps.executeQuery();
+//
+//        if (rs.next()) {
+//            codigoLibro = rs.getInt("codigo");
+//        }
+//
+//        // Cerrar el ResultSet y liberar recursos
+//        rs.close();
+//    } catch (SQLException e) {
+//        e.printStackTrace();
+//    }
+//
+//    return codigoLibro;
+
+    
+    
 
     public void modificarEjemplar(int codigo, EstadosEjemplar eje) { 
         

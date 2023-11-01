@@ -117,8 +117,7 @@ public class LibroData {
         JOptionPane.showMessageDialog(null, "Error al intentar modificar el libro: " + ex.getMessage());
     }
 }
-
-     
+    
     public ArrayList<Ejemplar> listarLibrosXautor(String autor) {
 
         String sqla = "SELECT titulo, Editor, ejemplar.codigo, ejemplar.estado  FROM `libro`\n"

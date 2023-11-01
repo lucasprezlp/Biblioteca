@@ -15,9 +15,9 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
 
     public AdministrarPrestamo() {
         initComponents();
-         jrbDevolucion.setEnabled(false);
+        jrbDevolucion.setEnabled(false);
         jrbPrestamo.setEnabled(false);
-        jButton4.setEnabled(false);
+        jBEjecutar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -29,14 +29,14 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
         jtNombreCompleto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jtTituloLibro = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jlFechaDeInicio = new javax.swing.JLabel();
         jlFechaDeDevolucion = new javax.swing.JLabel();
         jrbDevolucion = new javax.swing.JRadioButton();
         jrbPrestamo = new javax.swing.JRadioButton();
-        jButton4 = new javax.swing.JButton();
+        jBEjecutar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
@@ -60,22 +60,11 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel3.setText("Titulo del Libro");
 
-        jtTituloLibro.addActionListener(new java.awt.event.ActionListener() {
+        jBSalir.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jBSalir.setText("SALIR");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtTituloLibroActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
-        jButton3.setText("SALIR");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBSalirActionPerformed(evt);
             }
         });
 
@@ -103,38 +92,22 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
-        jButton4.setText("EJECUTAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jBEjecutar.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
+        jBEjecutar.setText("EJECUTAR");
+        jBEjecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jBEjecutarActionPerformed(evt);
             }
         });
 
         jLabel10.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel10.setText("Ingrese el Código:");
 
-        jtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtCodigoActionPerformed(evt);
-            }
-        });
-        jtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtCodigoKeyTyped(evt);
-            }
-        });
-
         jtBuscar.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jtBuscar.setText("Buscar Libro");
         jtBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtBuscarMouseClicked(evt);
-            }
-        });
-        jtBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtBuscarActionPerformed(evt);
             }
         });
 
@@ -169,9 +142,9 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
                             .addComponent(jrbDevolucion)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
-                                .addComponent(jButton4)
+                                .addComponent(jBEjecutar)
                                 .addGap(112, 112, 112)
-                                .addComponent(jButton3))
+                                .addComponent(jBSalir))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jrbPrestamo)
                                 .addGap(32, 32, 32)
@@ -230,15 +203,15 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jBSalir)
+                    .addComponent(jBEjecutar))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jBEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEjecutarActionPerformed
         
         try {
         if (jtNombreCompleto.getText().isEmpty()) {
@@ -274,7 +247,7 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
     } catch (NumberFormatException ex) {
         JOptionPane.showMessageDialog(null, "Ingrese caracteres numéricos válidos.");
     }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jBEjecutarActionPerformed
 
     private void jrbPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbPrestamoActionPerformed
 
@@ -282,9 +255,9 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
         jlFechaDeDevolucion.setText(LocalDate.now().plusDays(30).toString());
         jrbDevolucion.setSelected(false);
         if (jrbPrestamo.isSelected()) {
-            jButton4.setEnabled(true);
+            jBEjecutar.setEnabled(true);
         } else {
-            jButton4.setEnabled(false);
+            jBEjecutar.setEnabled(false);
         }
         if (jrbPrestamo.isSelected()) {
             jLabel5.setText("Fecha de prestamo");
@@ -299,14 +272,6 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_jrbPrestamoActionPerformed
-
-    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtCodigoActionPerformed
-
-    private void jtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCodigoKeyTyped
-   
-    }//GEN-LAST:event_jtCodigoKeyTyped
 
     private void jtBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtBuscarMouseClicked
 
@@ -326,9 +291,9 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
     private void jrbDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbDevolucionActionPerformed
         // TODO add your handling code here:
         if (jrbDevolucion.isSelected()) {
-            jButton4.setEnabled(true);
+            jBEjecutar.setEnabled(true);
         } else {
-            jButton4.setEnabled(false);
+            jBEjecutar.setEnabled(false);
         }
         jrbPrestamo.setSelected(false);
         jlFechaDeInicio.setText("");
@@ -337,27 +302,15 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
         jLabel4.setText("");
     }//GEN-LAST:event_jrbDevolucionActionPerformed
 
-    private void jtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtBuscarActionPerformed
-
-    private void jtTituloLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtTituloLibroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtTituloLibroActionPerformed
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBSalirActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBEjecutar;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

@@ -62,6 +62,10 @@ public class Libro {
         this.titulo = titulo;
         this.numEjemplares = numEjemplares;
     }
+    public Libro(int idLibro, int numEjemplares){
+        this.idLibro=idLibro;
+        this.numEjemplares=numEjemplares;
+    }
  
     public int getIdLibro() {
         return idLibro;

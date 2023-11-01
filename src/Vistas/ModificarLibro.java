@@ -14,8 +14,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     public ModificarLibro() {
         initComponents();
         jBModificar.setEnabled(false);
-        jBGuardar.setEnabled(false);
-        
+        jBGuardar.setEnabled(false);        
     }
 
     @SuppressWarnings("unchecked")

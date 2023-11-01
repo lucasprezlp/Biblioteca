@@ -106,9 +106,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTFNombreLector">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Juan Perez"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="activar">
       <Properties>

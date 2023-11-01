@@ -153,38 +153,17 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
         modelo.addColumn("Estado");
         jTLibros.setModel(modelo);  
     }
-        private void borrarFilaTabla() {
+    private void borrarFilaTabla() {
         int indice = modelo.getRowCount() - 1;
         for (int i = indice; i >= 0; i--) {
             modelo.removeRow(i);
         }
     }        
-        private void cargarLibros(Libro libroActual) {
+    private void cargarLibros(Libro libroActual) {
        
         //    modelo.addRow(new Object[]{libroActual.getIsbn(), libroActual.getTitulo(), libroActual.getEditor(), libroActual.getNumEjemplares()});
         
         }        
-//            try {                              
-//        listalib = libData.listarLibrosXautor("autor");
-//        
-//        jCBAutor.removeAllItems();
-//        
-//        for (Libro item : listalib) {
-//            jCBAutor.addItem(item.getAutor());
-//            JOptionPane.showMessageDialog(null, "Y??????");
-//        }
-//        
-//        if (!listalib.isEmpty()) {
-//            
-//            modelo.setRowCount(0); 
-//            
-//            for (Libro libroActual : listalib) {
-//                modelo.addRow(new Object[]{libroActual.getIsbn(), libroActual.getTitulo(), libroActual.getEditor(), libroActual.getNumEjemplares()});
-//            }
-//        }
-//    } catch (Exception ex) {
-//        JOptionPane.showMessageDialog(this, "Error al cargar los libros: " + ex.getMessage());
-//    }
-//}  
+
 }   
 

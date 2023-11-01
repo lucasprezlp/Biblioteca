@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vistas;
 
 import biblioteca.Data.LectorData;
@@ -11,7 +6,6 @@ import biblioteca.Entidades.Lector;
 import biblioteca.Entidades.Libro;
 import biblioteca.Entidades.Prestamo;
 import java.time.LocalDate;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -80,11 +74,6 @@ public class ConsultarLectorMoroso extends javax.swing.JInternalFrame {
 
         jBBuscar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jBBuscar.setText("BUSCAR");
-        jBBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBBuscarMouseClicked(evt);
-            }
-        });
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
@@ -141,17 +130,10 @@ public class ConsultarLectorMoroso extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Debe ingresar un lector");
         } else {
             LocalDate fechaActual = LocalDate.now();
-            // Date fechaActual = new Date();
             l.Moroso(jTextField1.getText(), modelo);
             if (pres.getFechaFin().isBefore(fechaActual)) {
                 modelo.addRow(new Object[]{lib.getTitulo(), pres.getFechaFin(), eje.getCodigo()});
             }
-
-            //  for(Ejemplar ejem: libData.listarLibrosXautor(autor)){
-            // modelo.addRow(new Object[]{ejem.getLibro().getTitulo(),
-            //  ejem.getCodigo(),ejem.getLibro().getEditor(),ejem.getEstado()
-            // });
-            // }
         }
 
     }//GEN-LAST:event_jBBuscarActionPerformed
@@ -159,10 +141,6 @@ public class ConsultarLectorMoroso extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jBBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBBuscarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

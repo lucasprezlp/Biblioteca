@@ -33,7 +33,6 @@ public class Biblioteca extends javax.swing.JFrame {
         jMIListarLibroXAutor = new javax.swing.JMenuItem();
         EJEMPLAR = new javax.swing.JMenu();
         jMIMostrarEjemplar = new javax.swing.JMenuItem();
-        jMIAdminEjemplar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         ActivarDesactivar = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -89,14 +88,6 @@ public class Biblioteca extends javax.swing.JFrame {
             }
         });
         EJEMPLAR.add(jMIMostrarEjemplar);
-
-        jMIAdminEjemplar.setText("Administrar ejemplares");
-        jMIAdminEjemplar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIAdminEjemplarActionPerformed(evt);
-            }
-        });
-        EJEMPLAR.add(jMIAdminEjemplar);
 
         jMenuBar1.add(EJEMPLAR);
 
@@ -279,17 +270,6 @@ private void cerrarAplicacion() {
         escritorio.moveToFront(libDisponible); 
     }//GEN-LAST:event_jMIMostrarEjemplarActionPerformed
 
-    private void jMIAdminEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAdminEjemplarActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
-        AdministrarEjemplares ejemDisponible = new AdministrarEjemplares();
-        ejemDisponible.setVisible(true);
-        ejemDisponible.getContentPane().setBackground(new Color(204, 204, 255));
-        escritorio.add(ejemDisponible);
-        escritorio.moveToFront(ejemDisponible); 
-    }//GEN-LAST:event_jMIAdminEjemplarActionPerformed
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -327,7 +307,6 @@ private void cerrarAplicacion() {
     private javax.swing.JMenuItem AdminPrestamo;
     private javax.swing.JMenu EJEMPLAR;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenuItem jMIAdminEjemplar;
     private javax.swing.JMenuItem jMIAdministrarLibro;
     private javax.swing.JMenuItem jMIListarLibroXAutor;
     private javax.swing.JMenuItem jMIMostrarEjemplar;

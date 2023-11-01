@@ -263,7 +263,7 @@ public class PrestamoData {
         return librosxFecha;
     }
 
-// listar lectores que pidieron prestamos y los los libros que fueron prestados
+// listar lectores que pidieron prestamos y los libros que fueron prestados
 
     public ArrayList<Prestamo> lectoresXPrestamoDeLibros(){
         ArrayList<Prestamo> lectoresXPrestamoDeLibros = new ArrayList<>();
