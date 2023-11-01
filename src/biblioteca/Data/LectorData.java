@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class LectorData {
 
@@ -191,7 +192,7 @@ public class LectorData {
         return estado;
     }
 
-    public void Moroso(String nombreCompleto) {
+    public void Moroso(String nombreCompleto,  DefaultTableModel modelo) {
         try {
             String sql = "SELECT l.titulo, p.fechaFin, e.codigo FROM prestamo p"
                     + " INNER JOIN ejemplar e ON p.idEjemplar = e.idEjemplar"
@@ -212,8 +213,10 @@ public class LectorData {
                     System.out.println("Título del libro: " + tituloLibro
                             + " Fecha de devolución: " + fechaDevolucion
                             + " Código del ejemplar: " + codigoEjemplar);
+                modelo.addRow(new Object[]{tituloLibro, fechaDevolucion, codigoEjemplar});
 
                 }
+                
             }
         } catch (SQLException ex) {
 

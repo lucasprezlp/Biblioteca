@@ -16,17 +16,20 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultarLectorMoroso extends javax.swing.JInternalFrame {
-    LectorData l = new LectorData();
+
     Lector lec = new Lector();
     Libro lib = new Libro();
-    Prestamo pres= new Prestamo();
-    Ejemplar eje= new Ejemplar();
+    Prestamo pres = new Prestamo();
+    Ejemplar eje = new Ejemplar();
+    LectorData l = new LectorData();
 
-private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel();
 
     public ConsultarLectorMoroso() {
         initComponents();
         armarcabecera();
+        jTable1.setModel(modelo);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -133,25 +136,23 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-   
-       
-       if (jTextField1.getText().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe ingresar un lector");
-    } else{
-           LocalDate fechaActual = LocalDate.now();
-          // Date fechaActual = new Date();
-              l.Moroso(jTextField1.getText());
-              if(pres.getFechaFin().isBefore(fechaActual)){
-                  modelo.addRow(new Object[]{lib.getTitulo(), pres.getFechaFin(), eje.getCodigo() });
-              }
-              
-              
-                    //  for(Ejemplar ejem: libData.listarLibrosXautor(autor)){
-           // modelo.addRow(new Object[]{ejem.getLibro().getTitulo(),
-              //  ejem.getCodigo(),ejem.getLibro().getEditor(),ejem.getEstado()
-           // });
-                     // }
-                      }
+
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un lector");
+        } else {
+            LocalDate fechaActual = LocalDate.now();
+            // Date fechaActual = new Date();
+            l.Moroso(jTextField1.getText(), modelo);
+            if (pres.getFechaFin().isBefore(fechaActual)) {
+                modelo.addRow(new Object[]{lib.getTitulo(), pres.getFechaFin(), eje.getCodigo()});
+            }
+
+            //  for(Ejemplar ejem: libData.listarLibrosXautor(autor)){
+            // modelo.addRow(new Object[]{ejem.getLibro().getTitulo(),
+            //  ejem.getCodigo(),ejem.getLibro().getEditor(),ejem.getEstado()
+            // });
+            // }
+        }
 
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -174,12 +175,11 @@ private DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-private void armarcabecera(){
-    modelo.addColumn("Titulo");
-     modelo.addColumn("Fecha de dev.");
-      modelo.addColumn("Código");
-      jTable1.setModel(modelo);
-}
-
+    private void armarcabecera() {
+        modelo.addColumn("Titulo");
+        modelo.addColumn("Fecha de dev.");
+        modelo.addColumn("Código");
+        jTable1.setModel(modelo);
+    }
 
 }

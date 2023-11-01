@@ -35,7 +35,7 @@ public class Biblioteca {
       Lector lector = new Lector(2, 14, "Juan Perez", "Jose Marmol 78", "juancito@yahoo.com.ar", 4587584, 111111, true);
        LectorData ld = new LectorData();
        String nombre="Juan Perez";
-       ld.Moroso(nombre);
+//       ld.Moroso(nombre);
       // ld.desactivarLector(1);
       // ld.activarLector(1);    
 //       ld.guardarLector(lector);
