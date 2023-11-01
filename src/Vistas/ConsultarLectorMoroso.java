@@ -6,11 +6,22 @@
 package Vistas;
 
 import biblioteca.Data.LectorData;
+import biblioteca.Entidades.Ejemplar;
+import biblioteca.Entidades.Lector;
+import biblioteca.Entidades.Libro;
+import biblioteca.Entidades.Prestamo;
+import java.time.LocalDate;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultarLectorMoroso extends javax.swing.JInternalFrame {
-LectorData l = new LectorData();
+    LectorData l = new LectorData();
+    Lector lec = new Lector();
+    Libro lib = new Libro();
+    Prestamo pres= new Prestamo();
+    Ejemplar eje= new Ejemplar();
+
 private DefaultTableModel modelo = new DefaultTableModel();
 
     public ConsultarLectorMoroso() {
@@ -123,11 +134,24 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
    
+       
        if (jTextField1.getText().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Debe ingresar un lector");
     } else{
-              l.Moroso(jBBuscar.toString());
-       }
+           LocalDate fechaActual = LocalDate.now();
+          // Date fechaActual = new Date();
+              l.Moroso(jTextField1.getText());
+              if(pres.getFechaFin().isBefore(fechaActual)){
+                  modelo.addRow(new Object[]{lib.getTitulo(), pres.getFechaFin(), eje.getCodigo() });
+              }
+              
+              
+                    //  for(Ejemplar ejem: libData.listarLibrosXautor(autor)){
+           // modelo.addRow(new Object[]{ejem.getLibro().getTitulo(),
+              //  ejem.getCodigo(),ejem.getLibro().getEditor(),ejem.getEstado()
+           // });
+                     // }
+                      }
 
     }//GEN-LAST:event_jBBuscarActionPerformed
 

@@ -28,12 +28,14 @@ public class Biblioteca {
       
         ///PRUEBAS DE LA CLASE LECTORDATA
         
-      // Lector lector = new Lector(14, "Juan Perez", "Jose Marmol 78", "juancito@yahoo.com.ar", 4587584, 111111, true);//metodo guardar y eliminar
+//       Lector lector = new Lector(14, "Juan Perez", "Jose Marmol 78", "juancito@yahoo.com.ar", 4587584, 111111, true);//metodo guardar y eliminar
 //       Lector lec1 =new Lector(58, "Maria Robledo", "Rivadavia 789", "mariaro@gmail.com", 25665895, 22222, true);/// metodo modificar
 //       Lector lector2 = new Lector(16, "Jose armendo", "pasaje 45", "juancito@yahoo.com.ar", 45647584, 111111, true);
 //       Lector lector3 = new Lector(17, "Veronica acosta", "Ribadavia", "juancito@yahoo.com.ar", 7737584, 111111, true);
-//       Lector lector = new Lector(2, 14, "Juan Perez", "Jose Marmol 78", "juancito@yahoo.com.ar", 4587584, 111111, true);
-//       LectorData ld = new LectorData();
+      Lector lector = new Lector(2, 14, "Juan Perez", "Jose Marmol 78", "juancito@yahoo.com.ar", 4587584, 111111, true);
+       LectorData ld = new LectorData();
+       String nombre="Juan Perez";
+       ld.Moroso(nombre);
       // ld.desactivarLector(1);
       // ld.activarLector(1);    
 //       ld.guardarLector(lector);
@@ -50,7 +52,7 @@ public class Biblioteca {
         
  //       Libro lib1 = new Libro(10,9,"El principito","Juancito Botaro",1974,"Novela","Ediciones ULP",REPARACION,2);
 //        Libro lib1 = new Libro(2, 1, "1974", "George Orwell", 1974, "Novela", "Ediciones ULP", DISPONIBLE, 2); //bd Veronica
-          LibroData lbd = new LibroData();  
+ //         LibroData lbd = new LibroData();  
 //        Libro lib = new Libro (9,PRESTADO);
        // lbd.guardarLibro(lib2);
 //        lbd.modificarLibro(lib);   

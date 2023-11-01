@@ -192,54 +192,34 @@ public class LectorData {
     }
 
     public void Moroso(String nombreCompleto) {
-        // Paso 1: Obtener el idLector basado en el nombreCompleto
-        int idLector = obtenerIdLectorPorNombre(nombreCompleto);
+        try {
+            String sql = "SELECT l.titulo, p.fechaFin, e.codigo FROM prestamo p"
+                    + " INNER JOIN ejemplar e ON p.idEjemplar = e.idEjemplar"
+                    + " INNER JOIN libro l ON e.idLibro = l.idLibro"
+                    + " inner join lector on p.idLector= lector.idLector"
+                    + " where lector.nombreCompleto = ? AND p.FechaFin <= CURRENT_DATE";
 
-        if (idLector != -1) {
-            // Paso 2: Comprobar si el lector es moroso y listar los libros adeudados
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombreCompleto);
             LocalDate fechaActual = LocalDate.now();
-            Date fechaActualSQL = Date.valueOf(fechaActual);
-            List<String> librosAdeudados = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String tituloLibro = rs.getString("titulo");
+                LocalDate fechaDevolucion = rs.getDate("fechaFin").toLocalDate();
+                int codigoEjemplar = rs.getInt("codigo");
 
-            String sql = "SELECT l.titulo, p.FechaFin, e.codigo "
-                    + "FROM prestamo p "
-                    + "INNER JOIN ejemplar e ON p.idEjemplar = e.idEjemplar "
-                    + "INNER JOIN libro l ON e.idLibro = l.idLibro "
-                    + "WHERE p.idLector = ? AND p.FechaFin <= CURRENT_DATE()";
+                if (fechaDevolucion.isBefore(fechaActual)) {
+                    System.out.println("Título del libro: " + tituloLibro
+                            + " Fecha de devolución: " + fechaDevolucion
+                            + " Código del ejemplar: " + codigoEjemplar);
 
-            try {
-                PreparedStatement ps = con.prepareStatement(sql);
-                ps.setInt(1, idLector);
-//                ps.setDate(2, fechaActualSQL);
-                ResultSet rs = ps.executeQuery();
-
-                while (rs.next()) {
-                    String tituloLibro = rs.getString("titulo");
-                    Date fechaDevolucion = rs.getDate("FechaFin");
-                    int codigo = rs.getInt("codigo");
-
-                    // Formatea la fecha de devolución como cadena legible
-                    LocalDate fechaDevolucionLocal = fechaDevolucion.toLocalDate();
-                    String fechaDevolucionFormateada = fechaDevolucionLocal.toString();
-                    
-                    librosAdeudados.add("Libro: " + tituloLibro + ", Fecha de Devolución: " + fechaDevolucionFormateada);
                 }
-
-                if (!librosAdeudados.isEmpty()) {
-                    System.out.println("El lector es moroso. Debe devolver los siguientes libros:");
-                    for (String libroAdeudado : librosAdeudados) {
-                        System.out.println(libroAdeudado);
-                    }
-                } else {
-                    System.out.println("El lector no es moroso o no tiene libros adeudados.");
-                }
-            } catch (SQLException ex) {
-                // Manejo de excepciones en caso de error de la base de datos
-                ex.printStackTrace();
             }
-        } else {
-            System.out.println("No se encontró un lector con el nombre proporcionado.");
+        } catch (SQLException ex) {
+
+            JOptionPane.showMessageDialog(null, "ni idea" + ex);
+
         }
     }
-
 }
+ 
