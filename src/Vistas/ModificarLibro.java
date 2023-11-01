@@ -76,7 +76,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         jLabel9.setText("Titulo del libro");
 
         jBGuardar.setFont(new java.awt.Font("Arial Black", 2, 12)); // NOI18N
-        jBGuardar.setText("Guardar");
+        jBGuardar.setText("GUARDAR");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
@@ -84,7 +84,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         });
 
         jBSalir.setFont(new java.awt.Font("Arial Black", 2, 12)); // NOI18N
-        jBSalir.setText("Salir");
+        jBSalir.setText("SALIR");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalirActionPerformed(evt);
@@ -106,7 +106,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         jLabel11.setText("Editor");
 
         jBLimpiar.setFont(new java.awt.Font("Arial Black", 2, 12)); // NOI18N
-        jBLimpiar.setText("Limpiar");
+        jBLimpiar.setText("LIMPIAR");
         jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLimpiarActionPerformed(evt);
@@ -114,7 +114,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         });
 
         jBModificar.setFont(new java.awt.Font("Arial Black", 2, 12)); // NOI18N
-        jBModificar.setText("Modificar");
+        jBModificar.setText("MODIFICAR");
         jBModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBModificarActionPerformed(evt);
@@ -168,13 +168,12 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
                                     .addComponent(jTFEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTFAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTFISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(113, 113, 113)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
                                 .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59)
-                                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
