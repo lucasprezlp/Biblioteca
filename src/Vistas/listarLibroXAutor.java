@@ -126,14 +126,14 @@ public class listarLibroXAutor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
- 
-        String autor=jTFAutor.getText();
-        for(Ejemplar ejem: libData.listarLibrosXautor(autor)){
+        modelo.setRowCount(0);
+        String autor = jTFAutor.getText();
+        for (Ejemplar ejem : libData.listarLibrosXautor(autor)) {
             modelo.addRow(new Object[]{ejem.getLibro().getTitulo(),
-                ejem.getCodigo(),ejem.getLibro().getEditor(),ejem.getEstado()
+                ejem.getCodigo(), ejem.getLibro().getEditor(), ejem.getEstado()
             });
         }
-        
+
     }//GEN-LAST:event_jBBuscarActionPerformed
 
 

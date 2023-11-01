@@ -29,6 +29,7 @@ private DefaultTableModel modelo;
         ejData = new EjemplarData();
         modelo = new DefaultTableModel();
         armarCabecera();
+        
     }
 
     /**
@@ -87,6 +88,11 @@ private DefaultTableModel modelo;
 
         jButton3.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jButton3.setText("LIMPIAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,7 +150,8 @@ private DefaultTableModel modelo;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String titulo = jTextField1.getText();
+     modelo.setRowCount(0);
+        String titulo = jTextField1.getText();
     for (Ejemplar listaej : ejData.listarEjemplarXId(titulo)) {
         if (listaej.getLibro().getTitulo() != null) {
             modelo.addRow(new Object[]{listaej.getCodigo(), listaej.getLibro().getNumEjemplares(), listaej.getEstado()});
@@ -159,6 +166,11 @@ private DefaultTableModel modelo;
 }
     
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        modelo.setRowCount(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

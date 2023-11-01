@@ -24,22 +24,22 @@ public class LibroData {
     PreparedStatement ps; 
 
     public void guardarLibro(Libro libro) {
-        String sql = "INSERT INTO libro(idLibro, isbn, titulo, autor, anio, tipo, Editor, estado, numEjemplares)"
-                + " VALUES (?,?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO libro(isbn, titulo, autor, anio, tipo, Editor, estado, numEjemplares)"
+                + " VALUES (?,?,?,?,?,?,?,?);";
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, libro.getIdLibro());
-            ps.setInt(2, libro.getIsbn());
-            ps.setString(3, libro.getTitulo());
-            ps.setString(4, libro.getAutor());
-            ps.setInt(5, libro.getAnio());
-            ps.setString(6, libro.getTipo());
-            ps.setString(7, libro.getEditor());
-            ps.setBoolean(8, libro.isEstado());ps.setInt(9, libro.getNumEjemplares());
+            ps.setInt(1, libro.getIsbn());
+            ps.setString(2, libro.getTitulo());
+            ps.setString(3, libro.getAutor());
+            ps.setInt(4, libro.getAnio());
+            ps.setString(5, libro.getTipo());
+            ps.setString(6, libro.getEditor());
+            ps.setBoolean(7, libro.isEstado());
+            ps.setInt(8, libro.getNumEjemplares());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                libro.setIdLibro(rs.getInt(1));
+//                libro.setIdLibro(rs.getInt(1));
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese un id correcto/diferente");
@@ -66,7 +66,7 @@ public class LibroData {
                 libro.setEstado(rs.getBoolean(1));libro.setNumEjemplares(rs.getInt("numEjemplares"));
 
             }   else{
-                JOptionPane.showMessageDialog(null, "Libro inactivo");
+                JOptionPane.showMessageDialog(null, "Libro esta inactivo o no existe");
             }
  
         } catch (SQLException ex) {
@@ -92,28 +92,32 @@ public class LibroData {
         return idLibro;         
         }
 
-    public void modificarLibro(Libro libro) {
-
-        String sql = "UPDATE libro SET isbn=?, titulo=?, autor=?, anio=?, tipo=?, editor=?, estado=?, numEjemplares=? "
-                + "WHERE idLibro = ?";
-        try {
-            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, libro.getIsbn());
-            ps.setString(2, libro.getTitulo());
-            ps.setString(3, libro.getAutor());
-            ps.setInt(4, libro.getAnio());
-            ps.setString(5, libro.getTipo());
-            ps.setString(6, libro.getEditor());
-            ps.setBoolean(7, libro.isEstado());ps.setInt(8, libro.getNumEjemplares());
-            ps.setInt(9, libro.getIdLibro());
-            int exito = ps.executeUpdate();
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "libro modificado con éxito");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error al intentar modificar el libro");
+   public void modificarLibro(Libro libro) {
+    String sql = "UPDATE libro SET isbn=?, titulo=?, autor=?, anio=?, tipo=?, editor=?, estado=?, numEjemplares=? WHERE idLibro = ?";
+    try {
+        ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setInt(1, libro.getIsbn());
+        ps.setString(2,libro.getTitulo()); ///// NO ENTIENDO POR QUE NO MEDIFICA EL TITULO
+        ps.setString(3, libro.getAutor());
+        ps.setInt(4, libro.getAnio());
+        ps.setString(5, libro.getTipo());
+        ps.setString(6, libro.getEditor());
+        ps.setBoolean(7, libro.isEstado());
+        ps.setInt(8, libro.getNumEjemplares());
+        ps.setInt(9, libro.getIdLibro());
+        
+        int exito = ps.executeUpdate();
+    
+        if (exito == 1) {
+            JOptionPane.showMessageDialog(null, "Libro modificado con éxito: " + libro.getTitulo());
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo modificar el libro: " + libro.getTitulo() );
         }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al intentar modificar el libro: " + ex.getMessage());
     }
+}
+
      
     public ArrayList<Ejemplar> listarLibrosXautor(String autor) {
 

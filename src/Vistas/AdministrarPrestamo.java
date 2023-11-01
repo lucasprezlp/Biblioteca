@@ -57,8 +57,6 @@ public class AdministrarPrestamo extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel2.setText("Ingrese Lector");
 
-        jtNombreCompleto.setText("Juan Perez");
-
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel3.setText("Titulo del Libro");
 

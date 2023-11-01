@@ -136,7 +136,7 @@ public class ConsultarLectorMoroso extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-
+        modelo.setRowCount(0);
         if (jTextField1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un lector");
         } else {

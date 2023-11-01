@@ -13,12 +13,16 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
 
     public ModificarLibro() {
         initComponents();
+        jBModificar.setEnabled(false);
+        jBGuardar.setEnabled(false);
+        
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        id = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -42,6 +46,8 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
         jRBEstado = new javax.swing.JRadioButton();
         jBModificar = new javax.swing.JButton();
         jTFTipo = new javax.swing.JTextField();
+
+        id.setText("jLabel1");
 
         setClosable(true);
         setIconifiable(true);
@@ -122,7 +128,20 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jtNombreDelLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(jBBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(jLabel6))))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -143,46 +162,33 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTFAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                    .addComponent(jTFAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTFnumEjemplares, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jRBEstado)
-                                    .addComponent(jTFTipo)
-                                    .addComponent(jTFEditor)
+                                    .addComponent(jTFTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTFEditor, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTFAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTFISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(113, 113, 113)
                                 .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(59, 59, 59)
                                 .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
-                                .addComponent(jLabel6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(jtNombreDelLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(jBBuscar))))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtNombreDelLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(jBBuscar))
                 .addGap(24, 24, 24)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTFISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -223,9 +229,22 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
- 
+        if(jtNombreDelLibro.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese un Libro");
+            return;
+        }
+        // esto es para eliminar datos de busquedas anteriores
+        jTFISBN.setText("");
+        jTFAutor.setText("");
+        jTFAnio.setText("");
+        jTFEditor.setText("");
+        jTFTipo.setText("");
+        jRBEstado.setSelected(false);
+        jTFnumEjemplares.setText("");
+        jBModificar.setEnabled(true);
+        jBGuardar.setEnabled(false);
         try {
-
+            
             libroActual = libData.buscarLibroXTitulo(jtNombreDelLibro.getText());
 
             if (libroActual != null) {
@@ -237,8 +256,13 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
                 jTFEditor.setText(libroActual.getEditor());
                 jTFTipo.setText(libroActual.getTipo());
                 jRBEstado.setSelected(libroActual.isEstado());
-                Integer numEje = libroActual.getNumEjemplares();
+                Integer numEje = libroActual.getNumEjemplares(); /// si esto se modifico me deberia crear tantos ejemplares como se a incrementado
                 jTFnumEjemplares.setText(numEje.toString());
+                id.setText(Integer.toString(libroActual.getIdLibro())); ///una para guardar un dato
+            } else {
+                
+                jBModificar.setEnabled(false);
+                jBGuardar.setEnabled(true);
             }
 
         } catch (NumberFormatException ex) {
@@ -247,8 +271,10 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-        jtNombreDelLibro.setText("");jTFISBN.setText(""); 
-        jTFAutor.setText(""); jTFAnio.setText("");
+        jtNombreDelLibro.setText("");
+        jTFISBN.setText(""); 
+        jTFAutor.setText("");
+        jTFAnio.setText("");
         jTFEditor.setText("");
         jTFTipo.setText("");
         jRBEstado.setSelected(false);jTFnumEjemplares.setText("");
@@ -258,7 +284,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
    
         try {
-
+           
             String titulo = jtNombreDelLibro.getText();
             Integer isbn = Integer.parseInt(jTFISBN.getText());
             String autor = jTFAutor.getText();
@@ -288,18 +314,22 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
     try{    
-        String titulo= jtNombreDelLibro.getText();
-        int id=libData.buscarIdxNombre(titulo);
-        Integer isbn= Integer.parseInt(jTFISBN.getText());
-        String autor= jTFAutor.getText();
-        Integer anio=Integer.parseInt(jTFAnio.getText());
-        String editor= jTFEditor.getText();
-        String genero=jTFTipo.getText();
-        Boolean estado= jRBEstado.isSelected();
-        Integer numEje=Integer.parseInt(jTFnumEjemplares.getText());
         
-        Libro libro= new Libro(id, isbn, titulo, autor, anio, genero, editor, estado, numEje);
+        String titulo = jtNombreDelLibro.getText();
+        int idLibro = Integer.parseInt(id.getText()); // Obtengo el ID del libro
+        Integer isbn = Integer.parseInt(jTFISBN.getText());
+        String autor = jTFAutor.getText();
+        Integer anio = Integer.parseInt(jTFAnio.getText());
+        String editor = jTFEditor.getText();
+        String genero = jTFTipo.getText();
+        Boolean estado = jRBEstado.isSelected();
+        Integer numEje = Integer.parseInt(jTFnumEjemplares.getText());
+        
+        Libro libro= new Libro(idLibro, isbn, titulo, autor, anio, genero, editor, estado, numEje);
+        
         libData.modificarLibro(libro);
+        
+        
     }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Ingrese datos válidos");
         }
@@ -307,6 +337,7 @@ public class ModificarLibro extends javax.swing.JInternalFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel id;
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBLimpiar;
